@@ -89,11 +89,9 @@ namespace GCRevit {
             this.app.SharedParametersFilename = tempFilePath;
 #if (REVIT2015)
             ExternalDefinitonCreationOptions opts = new ExternalDefinitonCreationOptions(name, type);
-#endif
-#if (REVIT2016)
+#else
             ExternalDefinitionCreationOptions opts = new ExternalDefinitionCreationOptions(name, type);
 #endif
-
             opts.Visible = true;
             ExternalDefinition def = app.OpenSharedParameterFile().Groups.Create("Temp Parameters").Definitions.Create(opts) as ExternalDefinition;
             app.SharedParametersFilename = origSharedParamFilePath;
