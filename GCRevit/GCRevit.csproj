@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{66A10D62-3E86-464F-89D5-434AEB16164E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GCRevit</RootNamespace>
+    <AssemblyName>GCRevit</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\..\..\..\..\..\..\GeometryCoder\Revit\2016\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Collectors\CollectorUtil.cs" />
+    <Compile Include="Collectors\GCAdaptiveComponentCollector.cs" />
+    <Compile Include="Collectors\GCElementCollector.cs" />
+    <Compile Include="Collectors\GCInstanceCollector.cs" />
+    <Compile Include="Collectors\GCMassCollector.cs" />
+    <Compile Include="Collectors\GCConnectionCollector.cs" />
+    <Compile Include="Collectors\GCFoundationCollector.cs" />
+    <Compile Include="Collectors\GCColumnCollector.cs" />
+    <Compile Include="Collectors\GCFloorCollector.cs" />
+    <Compile Include="Collectors\GCFrameCollector.cs" />
+    <Compile Include="Collectors\GCGridCollector.cs" />
+    <Compile Include="Collectors\GCLevelCollector.cs" />
+    <Compile Include="Collectors\GCRoofCollector.cs" />
+    <Compile Include="Collectors\GCViewCollector.cs" />
+    <Compile Include="Collectors\GCWallCollector.cs" />
+    <Compile Include="Collectors\GCLinkCollector.cs" />
+    <Compile Include="Creators\GCAdaptiveComponentCreator.cs" />
+    <Compile Include="Creators\GCColumnCreator.cs" />
+    <Compile Include="Creators\GCFrameCreator.cs" />
+    <Compile Include="Creators\GCGeometryCreator.cs" />
+    <Compile Include="Creators\GCInstanceCreator.cs" />
+    <Compile Include="Creators\GCLevelCreator.cs" />
+    <Compile Include="Creators\GCViewCreator.cs" />
+    <Compile Include="ElementDatas\GCColumnCurveData.cs" />
+    <Compile Include="ElementDatas\AGCElementCurveData.cs" />
+    <Compile Include="ElementDatas\GCFaceUVValues.cs" />
+    <Compile Include="ElementDatas\GCFrameCurveData.cs" />
+    <Compile Include="ElementDatas\GCGridIntersection.cs" />
+    <Compile Include="Elements\AGCElement.cs" />
+    <Compile Include="Elements\AGCColumnBase.cs" />
+    <Compile Include="Elements\AGCColumnCurveDriven.cs" />
+    <Compile Include="Elements\AGCViewportView.cs" />
+    <Compile Include="Elements\GCAdaptiveComponent.cs" />
+    <Compile Include="Elements\GCColumnInPlace.cs" />
+    <Compile Include="Elements\GCColumnSlanted.cs" />
+    <Compile Include="Elements\GCColumnVertical.cs" />
+    <Compile Include="Elements\GCConnection.cs" />
+    <Compile Include="Elements\GCInstance.cs" />
+    <Compile Include="Elements\GCLink.cs" />
+    <Compile Include="Elements\GCWallCurtainPanel.cs" />
+    <Compile Include="Elements\GCWallCurtain.cs" />
+    <Compile Include="Elements\GCFloor.cs" />
+    <Compile Include="Elements\AGCFloorBase.cs" />
+    <Compile Include="Elements\GCFloorInPlace.cs" />
+    <Compile Include="Elements\AGCFoundationBase.cs" />
+    <Compile Include="Elements\GCFoundationFloor.cs" />
+    <Compile Include="Elements\GCFoundationInPlace.cs" />
+    <Compile Include="Elements\GCFoundationInstance.cs" />
+    <Compile Include="Elements\AGCFrameBase.cs" />
+    <Compile Include="Elements\GCFrameBeam.cs" />
+    <Compile Include="Elements\GCFrameBrace.cs" />
+    <Compile Include="Elements\AGCFrameCurveDriven.cs" />
+    <Compile Include="Elements\GCFrameInPlace.cs" />
+    <Compile Include="Elements\AGCGridBase.cs" />
+    <Compile Include="Elements\GCGrid.cs" />
+    <Compile Include="Elements\GCGridMulti.cs" />
+    <Compile Include="Elements\AGCInstance.cs" />
+    <Compile Include="Elements\GCLevel.cs" />
+    <Compile Include="Elements\GCMass.cs" />
+    <Compile Include="Elements\AGCRoofBase.cs" />
+    <Compile Include="Elements\GCRoofExtrusion.cs" />
+    <Compile Include="Elements\GCRoofFootPrint.cs" />
+    <Compile Include="Elements\GCRoofInPlace.cs" />
+    <Compile Include="Elements\AGCViewBase.cs" />
+    <Compile Include="Elements\GCViewDrafting.cs" />
+    <Compile Include="Elements\GCViewLegend.cs" />
+    <Compile Include="Elements\GCViewLive.cs" />
+    <Compile Include="Elements\GCViewSheet.cs" />
+    <Compile Include="Elements\GCWall.cs" />
+    <Compile Include="Elements\AGCWallBase.cs" />
+    <Compile Include="Elements\GCWallInPlace.cs" />
+    <Compile Include="Exceptions\GCElementCreationException.cs" />
+    <Compile Include="Exceptions\GCElementParameterException.cs" />
+    <Compile Include="GCRevitDocument.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\GCLogger.cs" />
+    <Compile Include="Utils\GCLoggerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\GCLoggerForm.Designer.cs">
+      <DependentUpon>GCLoggerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\RevitUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Utils\GCLoggerForm.resx">
+      <DependentUpon>GCLoggerForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
