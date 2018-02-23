@@ -19,8 +19,9 @@ namespace GCRevit.ElementDatas {
     public class GCFaceUVValues : IDictionary<UV, IList<double>> {
 
         #region members
-        Dictionary<UV, IList<double>> vals;
-        Face face;
+
+        private Dictionary<UV, IList<double>> vals;
+        private Face face;
         #endregion
 
         #region constructors
@@ -148,7 +149,8 @@ namespace GCRevit.ElementDatas {
         #endregion
 
         #region key compare methods
-        UV GetMatchingKey(UV key) {
+
+        private UV GetMatchingKey(UV key) {
             foreach (var val in vals) {
                 if (AreKeysEqual(val.Key, key)) {
                     return val.Key;
@@ -159,11 +161,11 @@ namespace GCRevit.ElementDatas {
             return null;
         }
 
-        bool AreKeysEqual(UV key1, UV key2) {
+        private bool AreKeysEqual(UV key1, UV key2) {
             return key1.Equals(key2) || key1.IsAlmostEqualTo(key2);
         }
 
-        bool AreValuesEqual(IList<double> vals1, IList<double> vals2) {
+        private bool AreValuesEqual(IList<double> vals1, IList<double> vals2) {
             if (vals1.Count == vals2.Count) {
                 for (var i = 0; i < vals1.Count; i++) {
                     if (!AreDoublesAlmostEqual(vals1[i], vals2[i])) {
@@ -175,7 +177,7 @@ namespace GCRevit.ElementDatas {
             return false;
         }
 
-        bool AreDoublesAlmostEqual(double v1, double v2) {
+        private bool AreDoublesAlmostEqual(double v1, double v2) {
             return Math.Abs(v1 - v2) < GeometryUtil.DoubleComp;
         }
         #endregion

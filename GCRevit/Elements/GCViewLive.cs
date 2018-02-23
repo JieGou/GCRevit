@@ -84,8 +84,8 @@ namespace GCRevit.Elements {
             }
             return sfm;
         }
-        
-        int GetMaxNumOfMeasurments(IEnumerable<AGCElement> elems) {
+
+        private int GetMaxNumOfMeasurments(IEnumerable<AGCElement> elems) {
             var maxMeasurments = 0;
             foreach (var elem in elems) {
                 foreach (var uvVals in elem.FaceUVValues) {
@@ -102,7 +102,7 @@ namespace GCRevit.Elements {
             this.RevitView.AnalysisDisplayStyleId = analysisDisplayStyle.Id;
         }
 
-        AnalysisDisplayStyle GetAnalysisDisplayStyle(string displayStyleName, List<Color> colors) {
+        private AnalysisDisplayStyle GetAnalysisDisplayStyle(string displayStyleName, List<Color> colors) {
             var dispStyleColl = new FilteredElementCollector(this.elem.Document).OfClass(typeof(AnalysisDisplayStyle));
             foreach (AnalysisDisplayStyle style in dispStyleColl.ToElements()) {
                 if (style.Name.Equals(displayStyleName)) {
@@ -112,14 +112,14 @@ namespace GCRevit.Elements {
             return CreateAnalysisDisplayStyle(displayStyleName, colors);
         }
 
-        AnalysisDisplayStyle CreateAnalysisDisplayStyle(string displayStyleName, List<Color> colors) {
+        private AnalysisDisplayStyle CreateAnalysisDisplayStyle(string displayStyleName, List<Color> colors) {
             var coloredSurfaceSettings = new AnalysisDisplayColoredSurfaceSettings();
             var colorSettings = CreateAnalysisDisplayColorSettings(colors);
             var legendSettings = new AnalysisDisplayLegendSettings();
             return AnalysisDisplayStyle.CreateAnalysisDisplayStyle(this.elem.Document, displayStyleName, coloredSurfaceSettings, colorSettings, legendSettings);
         }
 
-        AnalysisDisplayColorSettings CreateAnalysisDisplayColorSettings(List<Color> colors) {
+        private AnalysisDisplayColorSettings CreateAnalysisDisplayColorSettings(List<Color> colors) {
             var colorSettings = new AnalysisDisplayColorSettings();
             colorSettings.MinColor = colors[0];
             var interColors = new List<AnalysisDisplayColorEntry>();

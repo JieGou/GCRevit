@@ -20,14 +20,15 @@ namespace GCRevit {
     public class GCRevitDocument {
 
         #region singleton member
-        static Dictionary<string, GCRevitDocument> pathDocumentMap;
+
+        private static Dictionary<string, GCRevitDocument> pathDocumentMap;
         #endregion
 
         #region members
-        Application app;
-        Document doc;
-        UIApplication uiapp;
-        UIDocument uidoc;
+        private Application app;
+        private Document doc;
+        private UIApplication uiapp;
+        private UIDocument uidoc;
         #endregion
 
         #region constructors
@@ -49,8 +50,8 @@ namespace GCRevit {
                 return revDoc;
             }
         }
-
-        GCRevitDocument(Document doc) {
+    
+        protected GCRevitDocument(Document doc) {
             this.doc = doc;
             this.uidoc = new UIDocument(this.doc);
             this.app = this.doc.Application;
@@ -82,7 +83,7 @@ namespace GCRevit {
             BindParameterDefinition(def, cat, group, inst);
         }
 
-        ExternalDefinition CreateProjectParameterDefinition(string name, ParameterType type) {
+        private ExternalDefinition CreateProjectParameterDefinition(string name, ParameterType type) {
             var origSharedParamFilePath = app.SharedParametersFilename;
             var tempFilePath = $"{Path.GetTempFileName()}.txt";
             using (File.Create(tempFilePath)) { }
@@ -99,7 +100,7 @@ namespace GCRevit {
             return def;
         }
 
-        void BindParameterDefinition(ExternalDefinition def, Category cat, BuiltInParameterGroup group, bool inst) {
+        private void BindParameterDefinition(ExternalDefinition def, Category cat, BuiltInParameterGroup group, bool inst) {
             var catSet = new CategorySet();
             catSet.Insert(cat);
             var bind = (inst) ?

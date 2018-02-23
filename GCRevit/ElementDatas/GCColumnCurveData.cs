@@ -22,7 +22,7 @@ namespace GCRevit.ElementDatas {
             }
         }
 
-        void SetUpSlantedColumn(FamilyInstance elem) {
+        private void SetUpSlantedColumn(FamilyInstance elem) {
             var lc = (LocationCurve)elem.Location;
             var c = lc.Curve;
             var startPoint = (c.GetEndPoint(0).Z < c.GetEndPoint(1).Z) ? c.GetEndPoint(0) : c.GetEndPoint(1);
@@ -30,7 +30,7 @@ namespace GCRevit.ElementDatas {
             SetUpPointValues(startPoint, endPoint);
         }
 
-        void SetUpVerticalColumn(FamilyInstance elem) {
+        private void SetUpVerticalColumn(FamilyInstance elem) {
             var lp = (LocationPoint)elem.Location;
             var pt = lp.Point;
             var baseLevel = elem.Document.GetElement(elem.LookupParameter(RevitColumnParameterUtil.BaseLevel).AsElementId()) as Level;

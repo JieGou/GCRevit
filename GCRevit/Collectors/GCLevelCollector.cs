@@ -15,8 +15,7 @@ using System.Linq;
 namespace GCRevit.Collectors {
 
     public class GCLevelClosestElevationComparer : IComparer<GCLevel> {
-
-        double tarElev;
+        private double tarElev;
 
         public GCLevelClosestElevationComparer(double tarElev) {
             this.tarElev = tarElev;

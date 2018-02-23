@@ -9,9 +9,10 @@ namespace GCRevit.Utils {
     public static class GCLogger {
 
         #region static members
-        static StringBuilder log;
-        static int succCt;
-        static int failCt;
+
+        private static StringBuilder log;
+        private static int succCt;
+        private static int failCt;
         #endregion
 
         #region static constructor

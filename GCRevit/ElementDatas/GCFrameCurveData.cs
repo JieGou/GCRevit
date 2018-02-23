@@ -21,7 +21,7 @@ namespace GCRevit.ElementDatas {
             SetUpStartAndEndPoints(elem, yOffset, zOffset);
         }
 
-        void SetUpStartAndEndPoints(FamilyInstance elem, double yOffset, double zOffset) {
+        private void SetUpStartAndEndPoints(FamilyInstance elem, double yOffset, double zOffset) {
             var crv = ((LocationCurve)elem.Location).Curve;
             var strPt = crv.GetEndPoint(0);
             var endPt = crv.GetEndPoint(1);

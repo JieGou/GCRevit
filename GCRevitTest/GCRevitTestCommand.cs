@@ -23,8 +23,7 @@ namespace GCRevitTest {
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
     public class GCRevitTestCommand : IExternalCommand {
-
-        GCRevitDocument doc;
+        private GCRevitDocument doc;
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements) {
             try {
@@ -41,7 +40,7 @@ namespace GCRevitTest {
             }
         }
 
-        void TestCollectors() {
+        private void TestCollectors() {
             //Columns
             //List<GCColumnVertical> vertCols = 
             //Connections
@@ -67,7 +66,7 @@ namespace GCRevitTest {
             //Walls
         }
 
-        void TestCreators() {
+        private void TestCreators() {
             GCLogger.AppendLine("Creators");
         }
     }

@@ -17,7 +17,8 @@ namespace GCRevit.Elements {
     public abstract class AGCFrameCurveDriven : AGCFrameBase {
 
         #region members
-        GCFrameCurveData crv;
+
+        private GCFrameCurveData crv;
         #endregion
 
         #region constructors

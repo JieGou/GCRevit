@@ -93,7 +93,7 @@ namespace GCRevit.Elements {
             }
         }
 
-        bool SetDoubleParameter(Parameter param, object val) {
+        private bool SetDoubleParameter(Parameter param, object val) {
             if (val is double || val is int) {
                 return param.Set((double)val);
             } else {
@@ -106,7 +106,7 @@ namespace GCRevit.Elements {
             }
         }
 
-        bool SetElementIdParameter(Parameter param, object val) {
+        private bool SetElementIdParameter(Parameter param, object val) {
             if (val is ElementId) {
                 return param.Set(val as ElementId);
             } else if (val is int) {
@@ -116,7 +116,7 @@ namespace GCRevit.Elements {
             }
         }
 
-        bool SetIntegerParameter(Parameter param, object val) {
+        private bool SetIntegerParameter(Parameter param, object val) {
             if (val is int) {
                 return param.Set((int)val);
             } else {

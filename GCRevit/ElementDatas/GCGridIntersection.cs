@@ -12,9 +12,10 @@ namespace GCRevit.ElementDatas {
     public class GCGridIntersection {
 
         #region members
-        AGCGridBase grid1;
-        AGCGridBase grid2;
-        List<XYZ> intPts;
+
+        private AGCGridBase grid1;
+        private AGCGridBase grid2;
+        private List<XYZ> intPts;
         #endregion
 
         #region properties

@@ -60,7 +60,7 @@ namespace GCRevit.Creators {
             }
         }
 
-        static XYZ CalculateArbitraryNormalDirectionOfCurveForLine(Line crv) {
+        private static XYZ CalculateArbitraryNormalDirectionOfCurveForLine(Line crv) {
             var strPt = crv.GetEndPoint(0);
             var endPt = crv.GetEndPoint(1);
             var ptOnPlane = (Math.Abs(strPt.Y - endPt.Y) < GeometryUtil.DoubleComp ) ? 
