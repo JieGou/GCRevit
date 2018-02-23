@@ -14,7 +14,7 @@ namespace GCRevit.Elements {
 
     public class GCInstance : AGCInstance {
 
-        public GCInstance(FamilyInstance inst) 
+        protected GCInstance(FamilyInstance inst) 
             : base(inst) { }
 
         public static GCInstance CreateGCInstance(Element elem) {

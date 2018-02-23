@@ -16,7 +16,7 @@ namespace GCRevit.Elements {
     public class GCColumnSlanted : AGCColumnCurveDriven {
 
         #region constructor
-        public GCColumnSlanted(FamilyInstance elem)
+        private GCColumnSlanted(FamilyInstance elem)
             : base(elem) { }
 
         public static GCColumnSlanted CreateGCColumnSlanted(Element elem) {

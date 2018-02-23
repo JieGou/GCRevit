@@ -23,7 +23,7 @@ namespace GCRevit.Creators {
             using (var subTrans = new SubTransaction(doc.Document)) {
                 if (TransactionStatus.Started == subTrans.Start()) {
                     var inst = AdaptiveComponentInstanceUtils.CreateAdaptiveComponentInstance(doc.Document, sym);
-                    var comp = new GCAdaptiveComponent(inst);
+                    var comp = GCAdaptiveComponent.CreateGCAdaptiveComponent(inst);
                     var ids = AdaptiveComponentInstanceUtils.GetInstancePlacementPointElementRefIds(inst);
                     if (ids.Count == locPts.Count) {
                         for (var i = 0; i < ids.Count; i++) {

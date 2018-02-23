@@ -21,7 +21,7 @@ namespace GCRevit.Creators {
 #else
             var lev = Level.Create(doc.Document, elev);
 #endif
-            return new GCLevel(lev);
+            return GCLevel.CreateGCLevel(lev);
         }
 
         public static List<GCLevel> CreateLevels(GCRevitDocument doc, List<double> elevs) {
@@ -32,7 +32,7 @@ namespace GCRevit.Creators {
 #else
                 var lev = Level.Create(doc.Document, elev);
 #endif
-                levs.Add(new GCLevel(lev));
+                levs.Add(GCLevel.CreateGCLevel(lev));
             }
             return levs;
         }

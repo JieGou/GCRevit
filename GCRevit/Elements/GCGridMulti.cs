@@ -15,7 +15,7 @@ namespace GCRevit.Elements {
     public class GCGridMulti : AGCGridBase {
 
         #region constructors
-        public GCGridMulti(MultiSegmentGrid grid)
+        private GCGridMulti(MultiSegmentGrid grid)
             : base(grid) { }
 
         public static GCGridMulti CreateGCGridMulti(Element elem) {

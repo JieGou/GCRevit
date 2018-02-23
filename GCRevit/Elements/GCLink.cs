@@ -18,7 +18,7 @@ namespace GCRevit.Elements {
     public class GCLink : AGCElement {
 
         #region
-        public GCLink(RevitLinkInstance link) 
+        private GCLink(RevitLinkInstance link) 
             : base(link) { }
 
         public static GCLink CreateGCRevitLink(Element elem) {

@@ -15,7 +15,7 @@ namespace GCRevit.Elements {
     public class GCViewSheet : AGCViewBase {
 
         #region constructors 
-        public GCViewSheet(View elem)
+        private GCViewSheet(View elem)
             : base(elem) { }
 
         public static GCViewSheet CreateGCViewSheet(Element elem) {

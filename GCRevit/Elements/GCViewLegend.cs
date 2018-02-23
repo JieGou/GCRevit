@@ -15,7 +15,7 @@ namespace GCRevit.Elements {
     public class GCViewLegend : AGCViewportView {
 
         #region constructors 
-        public GCViewLegend(View elem)
+        private GCViewLegend(View elem)
             : base(elem) { }
 
         public static GCViewLegend CreateGCViewLegend(Element elem) {

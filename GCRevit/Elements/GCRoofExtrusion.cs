@@ -15,7 +15,7 @@ namespace GCRevit.Elements {
     public class GCRoofExtrusion : AGCRoofBase {
 
         #region constructors
-        public GCRoofExtrusion(ExtrusionRoof elem)
+        private GCRoofExtrusion(ExtrusionRoof elem)
             : base(elem) { }
 
         public static GCRoofExtrusion CreateGCRoofExtrusion(Element elem) {

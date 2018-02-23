@@ -15,7 +15,7 @@ namespace GCRevit.Elements {
     public class GCFoundationFloor : AGCFoundationBase {
 
         #region constructors
-        public GCFoundationFloor(Floor elem)
+        private GCFoundationFloor(Floor elem)
             : base(elem) { }
                 
         public static GCFoundationFloor CreateGCFoundationFloor(Element elem) {

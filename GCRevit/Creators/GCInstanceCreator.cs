@@ -18,7 +18,7 @@ namespace GCRevit.Creators {
             if (!sym.IsActive) {
                 sym.Activate();
             }
-            return new GCInstance(doc.Document.Create.NewFamilyInstance(p1, sym, view));
+            return GCInstance.CreateGCInstance(doc.Document.Create.NewFamilyInstance(p1, sym, view));
         }
 
         public static GCInstance CreateLineDetailInstance(GCRevitDocument doc, XYZ p1, XYZ p2, FamilySymbol sym, View view) {
@@ -26,14 +26,14 @@ namespace GCRevit.Creators {
                 sym.Activate();
             }
             var line = Line.CreateBound(p1, p2);
-            return new GCInstance(doc.Document.Create.NewFamilyInstance(line, sym, view));
+            return GCInstance.CreateGCInstance(doc.Document.Create.NewFamilyInstance(line, sym, view));
         }
 
         public static GCInstance CreateLineDetailInstance(GCRevitDocument doc, Line line, FamilySymbol sym, View view) {
             if (!sym.IsActive) {
                 sym.Activate();
             }
-            return new GCInstance(doc.Document.Create.NewFamilyInstance(line, sym, view));
+            return GCInstance.CreateGCInstance(doc.Document.Create.NewFamilyInstance(line, sym, view));
         }
     }
 }

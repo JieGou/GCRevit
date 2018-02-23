@@ -15,7 +15,7 @@ namespace GCRevit.Elements {
     public class GCWall : AGCWallBase {
 
         #region constructors
-        public GCWall(Wall elem)
+        private GCWall(Wall elem)
             : base(elem) { }
 
         public static GCWall CreateGCWall(Element elem) {

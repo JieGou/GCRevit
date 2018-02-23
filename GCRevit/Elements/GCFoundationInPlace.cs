@@ -17,7 +17,7 @@ namespace GCRevit.Elements {
     public class GCFoundationInPlace : AGCInstance {
 
         #region constructors
-        public GCFoundationInPlace(FamilyInstance elem)
+        private GCFoundationInPlace(FamilyInstance elem)
             : base(elem) { }
 
         public static GCFoundationInPlace CreateGCFoundationInPlace(Element elem) {

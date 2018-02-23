@@ -67,3 +67,4 @@ C:\Users\mkero\Automata\Github\GCRevit\GCRevit2017\bin\Debug\zh-CN\AdWindows.res
 C:\Users\mkero\Automata\Github\GCRevit\GCRevit2017\bin\Debug\zh-TW\AdWindows.resources.dll
 C:\Users\mkero\Automata\Github\GCRevit\GCRevit2017\obj\Debug\GCRevit2017.dll
 C:\Users\mkero\Automata\Github\GCRevit\GCRevit2017\obj\Debug\GCRevit2017.pdb
+C:\Users\mkero\Automata\Github\GCRevit\GCRevit2017\obj\Debug\GCRevit2017.csprojResolveAssemblyReference.cache

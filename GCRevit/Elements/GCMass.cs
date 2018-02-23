@@ -17,7 +17,7 @@ namespace GCRevit.Elements {
     public class GCMass : AGCInstance {
 
         #region constructors
-        public GCMass(FamilyInstance elem)
+        private GCMass(FamilyInstance elem)
             : base(elem) { }
 
         public static GCMass CreateGCMass(Element elem) {

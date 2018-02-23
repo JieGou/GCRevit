@@ -15,7 +15,7 @@ namespace GCRevit.Elements {
     public class GCRoofFootPrint : AGCRoofBase {
 
         #region constructors
-        public GCRoofFootPrint(FootPrintRoof elem)
+        private GCRoofFootPrint(FootPrintRoof elem)
             : base(elem) { }
 
         public static GCRoofFootPrint CreateGCRoofFootPrint(Element elem) {

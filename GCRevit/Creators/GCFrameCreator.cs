@@ -20,44 +20,44 @@ namespace GCRevit.Creators {
         #region beam methods
         public static GCFrameBeam CreateBeam(GCRevitDocument doc, XYZ p1, XYZ p2, FamilySymbol sym, GCLevel lev) {
             var inst = CreateFrameByStructuralType(doc, p1, p2, sym, lev, StructuralType.Beam);
-            return new GCFrameBeam(inst);
+            return GCFrameBeam.CreateGCFrameBeam(inst);
         }
 
         public static GCFrameBeam CreateBeam(GCRevitDocument doc, XYZ p1, XYZ p2, FamilySymbol sym) {
             var inst = CreateFrameByStructuralType(doc, p1, p2, sym, StructuralType.Beam);
-            return new GCFrameBeam(inst);
+            return GCFrameBeam.CreateGCFrameBeam(inst);
         }
 
         public static GCFrameBeam CreateBeam(GCRevitDocument doc, Curve crv, FamilySymbol sym, GCLevel lev) {
             var inst = CreateFrameByStructuralType(doc, crv, sym, lev, StructuralType.Beam);
-            return new GCFrameBeam(inst);
+            return GCFrameBeam.CreateGCFrameBeam(inst);
         }
 
         public static GCFrameBeam CreateBeam(GCRevitDocument doc, Curve crv, FamilySymbol sym) {
             var inst = CreateFrameByStructuralType(doc, crv, sym, StructuralType.Beam);
-            return new GCFrameBeam(inst);
+            return GCFrameBeam.CreateGCFrameBeam(inst);
         }
         #endregion
 
         #region brace methods
         public static GCFrameBeam CreateBrace(GCRevitDocument doc, XYZ p1, XYZ p2, FamilySymbol sym, GCLevel lev) {
             var inst = CreateFrameByStructuralType(doc, p1, p2, sym, lev, StructuralType.Brace);
-            return new GCFrameBeam(inst);
+            return GCFrameBeam.CreateGCFrameBeam(inst);
         }
 
         public static GCFrameBeam CreateBrace(GCRevitDocument doc, XYZ p1, XYZ p2, FamilySymbol sym) {
             var inst = CreateFrameByStructuralType(doc, p1, p2, sym, StructuralType.Brace);
-            return new GCFrameBeam(inst);
+            return GCFrameBeam.CreateGCFrameBeam(inst);
         }
 
         public static GCFrameBeam CreateBrace(GCRevitDocument doc, Curve crv, FamilySymbol sym, GCLevel lev) {
             var inst = CreateFrameByStructuralType(doc, crv, sym, lev, StructuralType.Brace);
-            return new GCFrameBeam(inst);
+            return GCFrameBeam.CreateGCFrameBeam(inst);
         }
 
         public static GCFrameBeam CreateBrace(GCRevitDocument doc, Curve crv, FamilySymbol sym) {
             var inst = CreateFrameByStructuralType(doc, crv, sym, StructuralType.Brace);
-            return new GCFrameBeam(inst);
+            return GCFrameBeam.CreateGCFrameBeam(inst);
         }
         #endregion
 

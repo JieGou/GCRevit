@@ -18,7 +18,7 @@ namespace GCRevit.Elements {
     public class GCAdaptiveComponent : GCInstance {
 
         #region constructors
-        public GCAdaptiveComponent(FamilyInstance elem)
+        private GCAdaptiveComponent(FamilyInstance elem)
             : base(elem) { }
 
         public static GCAdaptiveComponent CreateGCAdaptiveComponent(Element elem) {

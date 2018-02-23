@@ -37,11 +37,12 @@ namespace GCRevit.Creators {
         }
 
         public static BoundingBoxXYZ GenerateBoundingBoxFromFaceData(XYZ facePoint, XYZ faceNormal, Transform faceDeriv, double viewCropDim, double viewDepth) {
-            var bb = new BoundingBoxXYZ();
-            bb.Enabled = true;
-            bb.Max = new XYZ(viewCropDim, viewCropDim, 0);
-            bb.Min = new XYZ(-viewCropDim, -viewCropDim, -viewDepth);
-            bb.Transform = SectionTransform(facePoint, faceNormal.Negate(), faceDeriv.BasisY, faceDeriv.BasisX.Negate());
+            var bb = new BoundingBoxXYZ {
+                Enabled = true,
+                Max = new XYZ(viewCropDim, viewCropDim, 0),
+                Min = new XYZ(-viewCropDim, -viewCropDim, -viewDepth),
+                Transform = SectionTransform(facePoint, faceNormal.Negate(), faceDeriv.BasisY, faceDeriv.BasisX.Negate())
+            };
             return bb;
         }
 

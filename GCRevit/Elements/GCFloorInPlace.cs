@@ -16,7 +16,7 @@ namespace GCRevit.Elements {
     public class GCFloorInPlace : AGCInstance {
 
         #region constructors
-        public GCFloorInPlace(FamilyInstance elem)
+        private GCFloorInPlace(FamilyInstance elem)
             : base(elem) { }
                 
         public static GCFloorInPlace CreateGCFloorInPlace(Element elem) {

@@ -20,35 +20,35 @@ namespace GCRevit.Creators {
         public static GCColumnVertical CreateVerticalColumn(GCRevitDocument doc, XYZ p1, double height, FamilySymbol sym, GCLevel lev) {
             var p2 = new XYZ(p1.X, p1.Y, p1.Z + height);
             var inst = GCFrameCreator.CreateFrameByStructuralType(doc, p1, p2, sym, lev, StructuralType.Column);
-            return new GCColumnVertical(inst);
+            return GCColumnVertical.CreateGCColumnVertical(inst);
         }
 
         public static GCColumnVertical CreateVerticalColumn(GCRevitDocument doc, XYZ p1, double height, FamilySymbol sym) {
             var p2 = new XYZ(p1.X, p1.Y, p1.Z + height);
             var inst = GCFrameCreator.CreateFrameByStructuralType(doc, p1, p2, sym, StructuralType.Column);
-            return new GCColumnVertical(inst);
+            return GCColumnVertical.CreateGCColumnVertical(inst);
         }
         #endregion
 
         #region slanted column methods
         public static GCColumnSlanted CreateSlantedColumn(GCRevitDocument doc, XYZ p1, XYZ p2, FamilySymbol sym, GCLevel lev) {
             var inst = GCFrameCreator.CreateFrameByStructuralType(doc, p1, p2, sym, lev, StructuralType.Column);
-            return new GCColumnSlanted(inst);
+            return GCColumnSlanted.CreateGCColumnSlanted(inst);
         }
 
         public static GCColumnSlanted CreateBrace(GCRevitDocument doc, XYZ p1, XYZ p2, FamilySymbol sym) {
             var inst = GCFrameCreator.CreateFrameByStructuralType(doc, p1, p2, sym, StructuralType.Column);
-            return new GCColumnSlanted(inst);
+            return GCColumnSlanted.CreateGCColumnSlanted(inst);
         }
 
         public static GCColumnSlanted CreateBrace(GCRevitDocument doc, Curve crv, FamilySymbol sym, GCLevel lev) {
             var inst = GCFrameCreator.CreateFrameByStructuralType(doc, crv, sym, lev, StructuralType.Column);
-            return new GCColumnSlanted(inst);
+            return GCColumnSlanted.CreateGCColumnSlanted(inst);
         }
 
         public static GCColumnSlanted CreateBrace(GCRevitDocument doc, Curve crv, FamilySymbol sym) {
             var inst = GCFrameCreator.CreateFrameByStructuralType(doc, crv, sym, StructuralType.Column);
-            return new GCColumnSlanted(inst);
+            return GCColumnSlanted.CreateGCColumnSlanted(inst);
         }
         #endregion
     }

@@ -15,7 +15,7 @@ namespace GCRevit.Elements {
     public class GCFrameInPlace : AGCFrameBase {
 
         #region constructor
-        public GCFrameInPlace(FamilyInstance elem)
+        private GCFrameInPlace(FamilyInstance elem)
             : base(elem) { }
 
         public static GCFrameInPlace CreateGCFrameInPlace(Element elem) {
