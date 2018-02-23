@@ -24,13 +24,13 @@ namespace GCRevit.Exceptions {
             : base(message) { }
 
         public GCElementCreationException(string format, params object[] args)
-            : base(String.Format(format, args)) { }
+            : base(string.Format(format, args)) { }
 
         public GCElementCreationException(string message, Exception innerException)
             : base(message, innerException) { }
 
         public GCElementCreationException(string format, Exception innerException, params object[] args)
-            : base(String.Format(format, args), innerException) { }
+            : base(string.Format(format, args), innerException) { }
 
         protected GCElementCreationException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }

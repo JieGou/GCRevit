@@ -45,7 +45,7 @@ namespace GCRevit.Utils {
 
         public static void AppendLine(string format, params object[] args) {
             try {
-                log.AppendLine(String.Format(format, args));
+                log.AppendLine(string.Format(format, args));
             } catch {
                 AppendLine("Failed To log formatted data: {0}", format);
             }

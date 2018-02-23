@@ -98,7 +98,7 @@ namespace GCRevit.Elements {
                 return param.Set((double)val);
             } else {
                 double dVal;
-                if (Double.TryParse(val.ToString(), out dVal)) {
+                if (double.TryParse(val.ToString(), out dVal)) {
                     return param.Set(dVal);
                 } else {
                     throw new GCElementParameterException(param.StorageType);
@@ -121,7 +121,7 @@ namespace GCRevit.Elements {
                 return param.Set((int)val);
             } else {
                 int iVal;
-                if (Int32.TryParse(val.ToString(), out iVal)) {
+                if (int.TryParse(val.ToString(), out iVal)) {
                     return param.Set(iVal);
                 } else {
                     throw new GCElementParameterException(param.StorageType);

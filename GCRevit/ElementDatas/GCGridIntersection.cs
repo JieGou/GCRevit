@@ -41,7 +41,7 @@ namespace GCRevit.ElementDatas {
 
         #region static methods
         public static XYZ GetClosestGridIntersection(XYZ refPt, List<GCGridIntersection> gridInts, out GCGridIntersection closGridInt) {
-            var closDist = Double.MaxValue;
+            var closDist = double.MaxValue;
             XYZ closIntPoint = null;
             closGridInt = null;
             foreach (var currGridInt in gridInts) {
@@ -62,12 +62,12 @@ namespace GCRevit.ElementDatas {
             var gridInts = new List<GCGridIntersection>();
             foreach (var g1 in grids) {
                 foreach (var g2 in grids) {
-                    if (g1.RevitElementIdInt != g2.RevitElementIdInt && !addedGridCombinations.Contains(String.Format("{0}-{1}", g1.RevitElementIdInt, g2.RevitElementIdInt))) {
+                    if (g1.RevitElementIdInt != g2.RevitElementIdInt && !addedGridCombinations.Contains($"{g1.RevitElementIdInt}-{g2.RevitElementIdInt}")) {
                         var ints = GetGridIntesections(g1, g2);
                         if (0 < ints.Count) {
                             gridInts.Add(new GCGridIntersection(g1, g2, ints));
-                            addedGridCombinations.Add(String.Format("{0}-{1}", g1.RevitElementIdInt, g2.RevitElementIdInt));
-                            addedGridCombinations.Add(String.Format("{0}-{1}", g2.RevitElementIdInt, g1.RevitElementIdInt));
+                            addedGridCombinations.Add($"{g1.RevitElementIdInt}-{g2.RevitElementIdInt}");
+                            addedGridCombinations.Add($"{g2.RevitElementIdInt}-{g1.RevitElementIdInt}");
                         }
                     }
                 }

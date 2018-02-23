@@ -84,7 +84,7 @@ namespace GCRevit {
 
         ExternalDefinition CreateProjectParameterDefinition(string name, ParameterType type) {
             var origSharedParamFilePath = app.SharedParametersFilename;
-            var tempFilePath = String.Format("{0}.txt", Path.GetTempFileName());
+            var tempFilePath = $"{Path.GetTempFileName()}.txt";
             using (File.Create(tempFilePath)) { }
             this.app.SharedParametersFilename = tempFilePath;
 #if (REVIT2015)

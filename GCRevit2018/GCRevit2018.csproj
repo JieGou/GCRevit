@@ -284,7 +284,6 @@
     <Compile Include="..\gcrevit\utils\RevitUtil.cs">
       <Link>Utils\RevitUtil.cs</Link>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

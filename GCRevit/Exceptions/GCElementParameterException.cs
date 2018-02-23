@@ -24,19 +24,19 @@ namespace GCRevit.Exceptions {
             : base(message) { }
 
         public GCElementParameterException(StorageType storType)
-            : base(String.Format("Failed to set parameter of type \"{0}\": Failed to cast object", storType.ToString())) { }
+            : base($"Failed to set parameter of type \"{storType.ToString()}\": Failed to cast object") { }
 
         public GCElementParameterException(StorageType storType, string message)
-            : base(String.Format("Failed to set parameter of type \"{0}\": {1}", storType.ToString(), message)) { }
+            : base($"Failed to set parameter of type \"{storType.ToString()}\": {message}") { }
 
         public GCElementParameterException(string format, params object[] args)
-            : base(String.Format(format, args)) { }
+            : base(string.Format(format, args)) { }
 
         public GCElementParameterException(string message, Exception innerException)
             : base(message, innerException) { }
 
         public GCElementParameterException(string format, Exception innerException, params object[] args)
-            : base(String.Format(format, args), innerException) { }
+            : base(string.Format(format, args), innerException) { }
 
         protected GCElementParameterException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
