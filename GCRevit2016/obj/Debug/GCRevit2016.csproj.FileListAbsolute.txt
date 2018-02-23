@@ -5,3 +5,10 @@ C:\Users\Michael Kero\Documents\GeometryCoder\Code\Open\GCRevit\GCRevit2016\bin\
 C:\Users\Michael Kero\Documents\GeometryCoder\Code\Open\GCRevit\GCRevit2016\obj\Debug\GCRevit2016.dll
 C:\Users\Michael Kero\Documents\GeometryCoder\Code\Open\GCRevit\GCRevit2016\obj\Debug\GCRevit2016.pdb
 C:\Users\Michael Kero\Documents\GeometryCoder\Code\Open\GCRevit\GCRevit2016\obj\Debug\GCRevit2016.csprojResolveAssemblyReference.cache
+C:\Users\mkero\Automata\Github\GCRevit\GCRevit2016\bin\Debug\GCRevit2016.dll
+C:\Users\mkero\Automata\Github\GCRevit\GCRevit2016\bin\Debug\GCRevit2016.pdb
+C:\Users\mkero\Automata\Github\GCRevit\GCRevit2016\obj\Debug\GCRevit2016.csprojResolveAssemblyReference.cache
+C:\Users\mkero\Automata\Github\GCRevit\GCRevit2016\obj\Debug\GCRevit2016.Utils.GCLoggerForm.resources
+C:\Users\mkero\Automata\Github\GCRevit\GCRevit2016\obj\Debug\GCRevit2016.csproj.GenerateResource.Cache
+C:\Users\mkero\Automata\Github\GCRevit\GCRevit2016\obj\Debug\GCRevit2016.dll
+C:\Users\mkero\Automata\Github\GCRevit\GCRevit2016\obj\Debug\GCRevit2016.pdb

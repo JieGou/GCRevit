@@ -1,0 +1,3 @@
+C:\Users\mkero\Automata\Github\GCRevit\GCRevit2017\obj\Debug\GCRevit2017.csprojResolveAssemblyReference.cache
+C:\Users\mkero\Automata\Github\GCRevit\GCRevit2017\obj\Debug\GCRevit.Utils.GCLoggerForm.resources
+C:\Users\mkero\Automata\Github\GCRevit\GCRevit2017\obj\Debug\GCRevit2017.csproj.GenerateResource.Cache
