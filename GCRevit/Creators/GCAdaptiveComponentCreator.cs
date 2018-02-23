@@ -20,15 +20,15 @@ namespace GCRevit.Creators {
     public static class GCAdaptiveComponentCreator {
 
         public static GCAdaptiveComponent CreateComponentByPoints(GCRevitDocument doc, FamilySymbol sym, List<XYZ> locPts) {
-            using (SubTransaction subTrans = new SubTransaction(doc.Document)) {
+            using (var subTrans = new SubTransaction(doc.Document)) {
                 if (TransactionStatus.Started == subTrans.Start()) {
-                    FamilyInstance inst = AdaptiveComponentInstanceUtils.CreateAdaptiveComponentInstance(doc.Document, sym);
-                    GCAdaptiveComponent comp = new GCAdaptiveComponent(inst);
-                    IList<ElementId> ids = AdaptiveComponentInstanceUtils.GetInstancePlacementPointElementRefIds(inst);
+                    var inst = AdaptiveComponentInstanceUtils.CreateAdaptiveComponentInstance(doc.Document, sym);
+                    var comp = new GCAdaptiveComponent(inst);
+                    var ids = AdaptiveComponentInstanceUtils.GetInstancePlacementPointElementRefIds(inst);
                     if (ids.Count == locPts.Count) {
-                        for (int i = 0; i < ids.Count; i++) {
-                            Element pt = doc.Document.GetElement(ids[i]);
-                            XYZ trans = locPts[i] - (pt.Location as LocationPoint).Point;
+                        for (var i = 0; i < ids.Count; i++) {
+                            var pt = doc.Document.GetElement(ids[i]);
+                            var trans = locPts[i] - (pt.Location as LocationPoint).Point;
                             comp.MovePointById(ids[i], trans);
                         }
                         subTrans.Commit();

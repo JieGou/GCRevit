@@ -28,7 +28,7 @@ namespace GCRevit.Elements {
 
         public virtual void InitializeFaceUVValues() {
             this.faceUVVals = new List<GCFaceUVValues>();
-            foreach (Face f in GeometryFaces()) {
+            foreach (var f in this.GeometryFaces()) {
                 this.faceUVVals.Add(new GCFaceUVValues(f));
             }
         }
@@ -75,17 +75,17 @@ namespace GCRevit.Elements {
         }
 
         public bool SetParameter(object param, object val) {
-            return SetParameter(GetParameter(param), val);
+            return this.SetParameter(this.GetParameter(param), val);
         }
 
         public bool SetParameter(Parameter param, object val) {
             switch (param.StorageType) {
                 case StorageType.Double:
-                    return SetDoubleParameter(param, val);
+                    return this.SetDoubleParameter(param, val);
                 case StorageType.ElementId:
-                    return SetElementIdParameter(param, val);
+                    return this.SetElementIdParameter(param, val);
                 case StorageType.Integer:
-                    return SetIntegerParameter(param, val);
+                    return this.SetIntegerParameter(param, val);
                 case StorageType.String:
                     return param.Set(val.ToString());
                 default:
@@ -136,11 +136,11 @@ namespace GCRevit.Elements {
         }
 
         public virtual void MoveTo(XYZ newLoc) {
-            XYZ elemPt = (this.elem.Location is LocationPoint) ?
+            var elemPt = (this.elem.Location is LocationPoint) ?
                 (this.elem.Location as LocationPoint).Point :
                 (this.elem.Location as LocationCurve).Curve.Evaluate(0.5, true);
-            XYZ vec = new XYZ(newLoc.X - elemPt.X, newLoc.Y - elemPt.Y, newLoc.Z - elemPt.Z);
-            Move(vec);
+            var vec = new XYZ(newLoc.X - elemPt.X, newLoc.Y - elemPt.Y, newLoc.Z - elemPt.Z);
+            this.Move(vec);
         }
 
         public virtual void Rotate(Line axis, double angle) {
@@ -150,25 +150,25 @@ namespace GCRevit.Elements {
 
         #region solid methods
         public virtual IEnumerable<Solid> GeometrySolids() {
-            return GeometrySolids(ViewDetailLevel.Fine);
+            return this.GeometrySolids(ViewDetailLevel.Fine);
         }
 
         public virtual IEnumerable<Solid> GeometrySolids(View view) {
-            Options opts = new Options();
+            var opts = new Options();
             opts.View = view;
             opts.DetailLevel = view.DetailLevel;
-            return GeometrySolids(opts);
+            return this.GeometrySolids(opts);
         }
 
         public virtual IEnumerable<Solid> GeometrySolids(ViewDetailLevel detLev) {
-            Options opts = new Options();
+            var opts = new Options();
             opts.DetailLevel = detLev;
-            return GeometrySolids(opts);
+            return this.GeometrySolids(opts);
         }
 
         public virtual IEnumerable<Solid> GeometrySolids(Options opts) {
-            foreach (GeometryObject go in this.elem.get_Geometry(opts)) {
-                Solid gs = go as Solid;
+            foreach (var go in this.elem.get_Geometry(opts)) {
+                var gs = go as Solid;
                 if (null != gs && 0 < gs.Faces.Size) {
                     yield return gs;
                 }
@@ -176,16 +176,16 @@ namespace GCRevit.Elements {
         }
 
         public double TotalVolume() {
-            double vol = 0.0;
-            foreach (Solid s in GeometrySolids()) {
+            var vol = 0.0;
+            foreach (var s in this.GeometrySolids()) {
                 vol += s.Volume;
             }
             return vol;
         }
 
         public double TotalSurfaceArea() {
-            double area = 0.0;
-            foreach (Face f in GeometryFaces()) {
+            var area = 0.0;
+            foreach (var f in this.GeometryFaces()) {
                 area += f.Area;
             }
             return area;
@@ -194,11 +194,11 @@ namespace GCRevit.Elements {
 
         #region face methods
         public virtual IEnumerable<Face> GeometryFaces() {
-            return GeometryFaces(GeometrySolids());
+            return this.GeometryFaces(this.GeometrySolids());
         }
 
         public virtual IEnumerable<Face> GeometryFaces(IEnumerable<Solid> sols) {
-            foreach (Solid sol in sols) {
+            foreach (var sol in sols) {
                 foreach (Face f in sol.Faces) {
                     if (null != f) {
                         yield return f;
@@ -218,12 +218,12 @@ namespace GCRevit.Elements {
 
         #region edge methods
         public virtual IEnumerable<Edge> GeometryEdges(bool keepDuplicates) {
-            return GeometryEdges(GeometryFaces(), keepDuplicates);
+            return this.GeometryEdges(this.GeometryFaces(), keepDuplicates);
         }
 
         public virtual IEnumerable<Edge> GeometryEdges(IEnumerable<Face> faces, bool keepDuplicates) {
-            List<Edge> edges = new List<Edge>();
-            foreach (Face f in faces) {
+            var edges = new List<Edge>();
+            foreach (var f in faces) {
                 foreach (EdgeArray ea in f.EdgeLoops) {
                     foreach (Edge e in ea) {
                         if (keepDuplicates) {

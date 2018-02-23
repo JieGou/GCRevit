@@ -22,9 +22,9 @@ namespace GCRevit.Collectors {
         public delegate T CreateElement<T>(Element elem);
 
         public static IEnumerable<T> CollectAllElementsOfCategory<T>(GCRevitDocument doc, BuiltInCategory categ, List<IsElement> IsElem, List<CreateElement<T>> CreateElement) {
-            FilteredElementCollector coll = new FilteredElementCollector(doc.Document).OfCategory(categ);
-            foreach (Element el in coll.ToElements()) {
-                for (int i = 0; i < IsElem.Count; i++) {
+            var coll = new FilteredElementCollector(doc.Document).OfCategory(categ);
+            foreach (var el in coll.ToElements()) {
+                for (var i = 0; i < IsElem.Count; i++) {
                     if (IsElem[i](el)) {
                         yield return CreateElement[i](el);
                     }
@@ -33,8 +33,8 @@ namespace GCRevit.Collectors {
         }
 
         public static IEnumerable<T> CollectAllElementsOfCategory<T>(GCRevitDocument doc, BuiltInCategory categ, IsElement IsElem, CreateElement<T> CreateElement) {
-            FilteredElementCollector coll = new FilteredElementCollector(doc.Document).OfCategory(categ);
-            foreach (Element el in coll.ToElements()) {
+            var coll = new FilteredElementCollector(doc.Document).OfCategory(categ);
+            foreach (var el in coll.ToElements()) {
                 if (IsElem(el)) {
                     yield return CreateElement(el);
                 }
@@ -42,8 +42,8 @@ namespace GCRevit.Collectors {
         }
 
         public static IEnumerable<T> CollectAllElementsOfClass<T>(GCRevitDocument doc, Type type, IsElement IsElem, CreateElement<T> CreateElement) {
-            FilteredElementCollector coll = new FilteredElementCollector(doc.Document).OfClass(type);
-            foreach (Element el in coll.ToElements()) {
+            var coll = new FilteredElementCollector(doc.Document).OfClass(type);
+            foreach (var el in coll.ToElements()) {
                 if (IsElem(el)) {
                     yield return CreateElement(el);
                 }
@@ -51,8 +51,8 @@ namespace GCRevit.Collectors {
         }
 
         public static IEnumerable<T> CollectSelectedElements<T>(GCRevitDocument doc, IsElement IsElem, CreateElement<T> CreateElement) {
-            foreach (ElementId id in doc.UIDocument.Selection.GetElementIds()) {
-                Element el = doc.Document.GetElement(id);
+            foreach (var id in doc.UIDocument.Selection.GetElementIds()) {
+                var el = doc.Document.GetElement(id);
                 if (IsElem(el)) {
                     yield return CreateElement(el);
                 }
@@ -60,9 +60,9 @@ namespace GCRevit.Collectors {
         }
 
         public static IEnumerable<T> CollectSelectedElements<T>(GCRevitDocument doc, List<IsElement> IsElem, List<CreateElement<T>> CreateElement) {
-            foreach (ElementId id in doc.UIDocument.Selection.GetElementIds()) {
-                Element el = doc.Document.GetElement(id);
-                for (int i = 0; i < IsElem.Count; i++) {
+            foreach (var id in doc.UIDocument.Selection.GetElementIds()) {
+                var el = doc.Document.GetElement(id);
+                for (var i = 0; i < IsElem.Count; i++) {
                     if (IsElem[i](el)) {
                         yield return CreateElement[i](el);
                     }

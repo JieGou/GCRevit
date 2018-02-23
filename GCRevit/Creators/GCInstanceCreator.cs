@@ -25,7 +25,7 @@ namespace GCRevit.Creators {
             if (!sym.IsActive) {
                 sym.Activate();
             }
-            Line line = Line.CreateBound(p1, p2);
+            var line = Line.CreateBound(p1, p2);
             return new GCInstance(doc.Document.Create.NewFamilyInstance(line, sym, view));
         }
 

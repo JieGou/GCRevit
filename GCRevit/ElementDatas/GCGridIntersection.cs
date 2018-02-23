@@ -41,12 +41,12 @@ namespace GCRevit.ElementDatas {
 
         #region static methods
         public static XYZ GetClosestGridIntersection(XYZ refPt, List<GCGridIntersection> gridInts, out GCGridIntersection closGridInt) {
-            double closDist = Double.MaxValue;
+            var closDist = Double.MaxValue;
             XYZ closIntPoint = null;
             closGridInt = null;
-            foreach (GCGridIntersection currGridInt in gridInts) {
-                foreach (XYZ currIntPoint in currGridInt.IntersectionPoints) {
-                    double currDist = GeometryUtil.XYDistance(refPt, currIntPoint);
+            foreach (var currGridInt in gridInts) {
+                foreach (var currIntPoint in currGridInt.IntersectionPoints) {
+                    var currDist = GeometryUtil.XYDistance(refPt, currIntPoint);
                     if (closDist > currDist) {
                         closDist = currDist;
                         closIntPoint = currIntPoint;
@@ -58,12 +58,12 @@ namespace GCRevit.ElementDatas {
         }
 
         public static List<GCGridIntersection> GetGridIntersections(List<AGCGridBase> grids) {
-            List<string> addedGridCombinations = new List<string>();
-            List<GCGridIntersection> gridInts = new List<GCGridIntersection>();
-            foreach (AGCGridBase g1 in grids) {
-                foreach (AGCGridBase g2 in grids) {
+            var addedGridCombinations = new List<string>();
+            var gridInts = new List<GCGridIntersection>();
+            foreach (var g1 in grids) {
+                foreach (var g2 in grids) {
                     if (g1.RevitElementIdInt != g2.RevitElementIdInt && !addedGridCombinations.Contains(String.Format("{0}-{1}", g1.RevitElementIdInt, g2.RevitElementIdInt))) {
-                        List<XYZ> ints = GetGridIntesections(g1, g2);
+                        var ints = GetGridIntesections(g1, g2);
                         if (0 < ints.Count) {
                             gridInts.Add(new GCGridIntersection(g1, g2, ints));
                             addedGridCombinations.Add(String.Format("{0}-{1}", g1.RevitElementIdInt, g2.RevitElementIdInt));
@@ -88,30 +88,30 @@ namespace GCRevit.ElementDatas {
         }
 
         public static List<XYZ> GridToGridIntersections(GCGrid grid1, GCGrid grid2) {
-            Curve g1crv = grid1.RevitGrid.Curve;
-            Curve g2crv = grid2.RevitGrid.Curve;
+            var g1crv = grid1.RevitGrid.Curve;
+            var g2crv = grid2.RevitGrid.Curve;
             return GeometryUtil.IntersectionPointsOfCurves(g1crv, g2crv);
         }
 
         public static List<XYZ> GridToGridIntersections(GCGrid grid1, GCGridMulti grid2) {
-            List<XYZ> ints = new List<XYZ>();
-            GCRevitDocument doc = GCRevitDocument.DocumentInstance(grid2.RevitElement.Document);
-            Curve g1crv = grid1.RevitGrid.Curve;
-            foreach (ElementId gridId in grid2.RevitMultiGrid.GetGridIds()) {
-                Curve g2crv = (doc.GetElement(gridId) as Grid).Curve;
+            var ints = new List<XYZ>();
+            var doc = GCRevitDocument.DocumentInstance(grid2.RevitElement.Document);
+            var g1crv = grid1.RevitGrid.Curve;
+            foreach (var gridId in grid2.RevitMultiGrid.GetGridIds()) {
+                var g2crv = (doc.GetElement(gridId) as Grid).Curve;
                 ints.AddRange(GeometryUtil.IntersectionPointsOfCurves(g1crv, g2crv));
             }
             return ints;
         }
 
         public static List<XYZ> GridToGridIntersections(GCGridMulti grid1, GCGridMulti grid2) {
-            List<XYZ> ints = new List<XYZ>();
-            GCRevitDocument doc = GCRevitDocument.DocumentInstance(grid1.RevitElement.Document);
-            foreach (ElementId grid1Id in grid1.RevitMultiGrid.GetGridIds()) {
-                foreach (ElementId grid2Id in grid2.RevitMultiGrid.GetGridIds()) {
+            var ints = new List<XYZ>();
+            var doc = GCRevitDocument.DocumentInstance(grid1.RevitElement.Document);
+            foreach (var grid1Id in grid1.RevitMultiGrid.GetGridIds()) {
+                foreach (var grid2Id in grid2.RevitMultiGrid.GetGridIds()) {
                     if (grid1Id.IntegerValue != grid2Id.IntegerValue) {
-                        Grid g1 = doc.GetElement(grid1Id) as Grid;
-                        Grid g2 = doc.GetElement(grid2Id) as Grid;
+                        var g1 = doc.GetElement(grid1Id) as Grid;
+                        var g2 = doc.GetElement(grid2Id) as Grid;
                         ints.AddRange(GeometryUtil.IntersectionPointsOfCurves(g1.Curve, g2.Curve));
                     }
                 }

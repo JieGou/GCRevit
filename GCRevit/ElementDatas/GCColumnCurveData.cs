@@ -23,22 +23,22 @@ namespace GCRevit.ElementDatas {
         }
 
         void SetUpSlantedColumn(FamilyInstance elem) {
-            LocationCurve lc = (LocationCurve)elem.Location;
-            Curve c = lc.Curve;
-            XYZ startPoint = (c.GetEndPoint(0).Z < c.GetEndPoint(1).Z) ? c.GetEndPoint(0) : c.GetEndPoint(1);
-            XYZ endPoint = (c.GetEndPoint(0).Z < c.GetEndPoint(1).Z) ? c.GetEndPoint(1) : c.GetEndPoint(0);
+            var lc = (LocationCurve)elem.Location;
+            var c = lc.Curve;
+            var startPoint = (c.GetEndPoint(0).Z < c.GetEndPoint(1).Z) ? c.GetEndPoint(0) : c.GetEndPoint(1);
+            var endPoint = (c.GetEndPoint(0).Z < c.GetEndPoint(1).Z) ? c.GetEndPoint(1) : c.GetEndPoint(0);
             SetUpPointValues(startPoint, endPoint);
         }
 
         void SetUpVerticalColumn(FamilyInstance elem) {
-            LocationPoint lp = (LocationPoint)elem.Location;
-            XYZ pt = lp.Point;
-            Level baseLevel = elem.Document.GetElement(elem.LookupParameter(RevitColumnParameterUtil.BaseLevel).AsElementId()) as Level;
-            Level topLevel = elem.Document.GetElement(elem.LookupParameter(RevitColumnParameterUtil.TopLevel).AsElementId()) as Level;
-            double baseOffset = elem.LookupParameter(RevitColumnParameterUtil.BaseOffset).AsDouble();
-            double topOffset = elem.LookupParameter(RevitColumnParameterUtil.TopOffset).AsDouble();
-            XYZ startPoint = new XYZ(pt.X, pt.Y, baseLevel.Elevation + baseOffset);
-            XYZ endPoint = new XYZ(pt.X, pt.Y, topLevel.Elevation + topOffset);
+            var lp = (LocationPoint)elem.Location;
+            var pt = lp.Point;
+            var baseLevel = elem.Document.GetElement(elem.LookupParameter(RevitColumnParameterUtil.BaseLevel).AsElementId()) as Level;
+            var topLevel = elem.Document.GetElement(elem.LookupParameter(RevitColumnParameterUtil.TopLevel).AsElementId()) as Level;
+            var baseOffset = elem.LookupParameter(RevitColumnParameterUtil.BaseOffset).AsDouble();
+            var topOffset = elem.LookupParameter(RevitColumnParameterUtil.TopOffset).AsDouble();
+            var startPoint = new XYZ(pt.X, pt.Y, baseLevel.Elevation + baseOffset);
+            var endPoint = new XYZ(pt.X, pt.Y, topLevel.Elevation + topOffset);
             SetUpPointValues(startPoint, endPoint);
         }
     }

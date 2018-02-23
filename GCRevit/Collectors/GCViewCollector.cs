@@ -16,13 +16,13 @@ namespace GCRevit.Collectors {
     public static class GCViewCollector {
 
         public static IEnumerable<AGCViewBase> GetAllViews(GCRevitDocument doc) {
-            List<GCElementCollector.IsElement> isElem = new List<GCElementCollector.IsElement> { 
+            var isElem = new List<GCElementCollector.IsElement> { 
                 GCViewDrafting.IsViewDrafting, 
                 GCViewLegend.IsViewLegend,
                 GCViewLive.IsViewLive,
                 GCViewSheet.IsViewSheet
             };
-            List<GCElementCollector.CreateElement<AGCViewBase>> createElem = new List<GCElementCollector.CreateElement<AGCViewBase>>() { 
+            var createElem = new List<GCElementCollector.CreateElement<AGCViewBase>>() { 
                 GCViewDrafting.CreateGCViewDrafting, 
                 GCViewLegend.CreateGCViewLegend,
                 GCViewLive.CreateGCViewLive,
@@ -32,13 +32,13 @@ namespace GCRevit.Collectors {
         }
 
         public static IEnumerable<AGCViewBase> GetSelectedViews(GCRevitDocument doc) {
-            List<GCElementCollector.IsElement> isElem = new List<GCElementCollector.IsElement> { 
+            var isElem = new List<GCElementCollector.IsElement> { 
                 GCViewDrafting.IsViewDrafting, 
                 GCViewLegend.IsViewLegend,
                 GCViewLive.IsViewLive,
                 GCViewSheet.IsViewSheet
             };
-            List<GCElementCollector.CreateElement<AGCViewBase>> createElem = new List<GCElementCollector.CreateElement<AGCViewBase>>() { 
+            var createElem = new List<GCElementCollector.CreateElement<AGCViewBase>>() { 
                 GCViewDrafting.CreateGCViewDrafting, 
                 GCViewLegend.CreateGCViewLegend,
                 GCViewLive.CreateGCViewLive,

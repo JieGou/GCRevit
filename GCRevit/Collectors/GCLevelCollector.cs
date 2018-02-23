@@ -26,8 +26,8 @@ namespace GCRevit.Collectors {
             if (null == x && null == y) { return 0; }
             if (null == x) { return 1; }
             if (null == y) { return -1; }
-            double xComp = Math.Abs(x.RevitLevel.Elevation - tarElev);
-            double yComp = Math.Abs(y.RevitLevel.Elevation - tarElev);
+            var xComp = Math.Abs(x.RevitLevel.Elevation - tarElev);
+            var yComp = Math.Abs(y.RevitLevel.Elevation - tarElev);
             return xComp.CompareTo(yComp);
         }
     }
@@ -53,7 +53,7 @@ namespace GCRevit.Collectors {
         }
 
         public static GCLevel GetLevelClosestTo(GCRevitDocument doc, double elev) {
-            List<GCLevel> levs = Enumerable.ToList<GCLevel>(CollectAllLevels(doc));
+            var levs = Enumerable.ToList<GCLevel>(CollectAllLevels(doc));
             levs.Sort(new GCLevelClosestElevationComparer(elev));
             return levs[0];
         }

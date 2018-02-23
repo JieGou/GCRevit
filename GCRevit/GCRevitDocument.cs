@@ -39,7 +39,7 @@ namespace GCRevit {
             if (null == pathDocumentMap) {
                 pathDocumentMap = new Dictionary<string, GCRevitDocument>();
             }
-            string path = doc.PathName;
+            var path = doc.PathName;
             GCRevitDocument revDoc;
             if (pathDocumentMap.TryGetValue(path, out revDoc)) {
                 return revDoc;
@@ -78,31 +78,31 @@ namespace GCRevit {
 
         #region parameter methods
         public void  CreateProjectParameter(string name, Category cat, ParameterType type, BuiltInParameterGroup group, bool inst) {
-            ExternalDefinition def = CreateProjectParameterDefinition(name, type);
+            var def = CreateProjectParameterDefinition(name, type);
             BindParameterDefinition(def, cat, group, inst);
         }
 
         ExternalDefinition CreateProjectParameterDefinition(string name, ParameterType type) {
-            string origSharedParamFilePath = app.SharedParametersFilename;
-            string tempFilePath = String.Format("{0}.txt", Path.GetTempFileName());
+            var origSharedParamFilePath = app.SharedParametersFilename;
+            var tempFilePath = String.Format("{0}.txt", Path.GetTempFileName());
             using (File.Create(tempFilePath)) { }
             this.app.SharedParametersFilename = tempFilePath;
 #if (REVIT2015)
             ExternalDefinitonCreationOptions opts = new ExternalDefinitonCreationOptions(name, type);
 #else
-            ExternalDefinitionCreationOptions opts = new ExternalDefinitionCreationOptions(name, type);
+            var opts = new ExternalDefinitionCreationOptions(name, type);
 #endif
             opts.Visible = true;
-            ExternalDefinition def = app.OpenSharedParameterFile().Groups.Create("Temp Parameters").Definitions.Create(opts) as ExternalDefinition;
+            var def = app.OpenSharedParameterFile().Groups.Create("Temp Parameters").Definitions.Create(opts) as ExternalDefinition;
             app.SharedParametersFilename = origSharedParamFilePath;
             File.Delete(tempFilePath);
             return def;
         }
 
         void BindParameterDefinition(ExternalDefinition def, Category cat, BuiltInParameterGroup group, bool inst) {
-            CategorySet catSet = new CategorySet();
+            var catSet = new CategorySet();
             catSet.Insert(cat);
-            Binding bind = (inst) ?
+            var bind = (inst) ?
                 this.app.Create.NewInstanceBinding(catSet) as Binding :
                 this.app.Create.NewTypeBinding(catSet) as Binding;
             this.doc.ParameterBindings.Insert(def, bind, group);
@@ -168,17 +168,17 @@ namespace GCRevit {
 
         #region user prompted selection methods
         public Edge SelectEdgeFromDocument() {
-            Reference edgeRef = this.uidoc.Selection.PickObject(ObjectType.Edge);
+            var edgeRef = this.uidoc.Selection.PickObject(ObjectType.Edge);
             return this.doc.GetElement(edgeRef.ElementId).GetGeometryObjectFromReference(edgeRef) as Edge;
         }
 
         public Element SelectElementFromDocument() {
-            Reference elemRef = this.uidoc.Selection.PickObject(ObjectType.Element);
+            var elemRef = this.uidoc.Selection.PickObject(ObjectType.Element);
             return this.doc.GetElement(elemRef.ElementId);
         }
 
         public Face SelectFaceFromDocument() {
-            Reference faceRef = this.uidoc.Selection.PickObject(ObjectType.Face);
+            var faceRef = this.uidoc.Selection.PickObject(ObjectType.Face);
             return this.doc.GetElement(faceRef.ElementId).GetGeometryObjectFromReference(faceRef) as Face;
         }
         #endregion

@@ -29,7 +29,7 @@ namespace GCRevit.Elements {
         }
 
         public static bool TypicalFloorParametersExist(Element elem) {
-            foreach (string paramName in RevitFloorParameterUtil.StandardFloorParameterNames) {
+            foreach (var paramName in RevitFloorParameterUtil.StandardFloorParameterNames) {
                 if (null == elem.LookupParameter(paramName)) {
                     return false;
                 }

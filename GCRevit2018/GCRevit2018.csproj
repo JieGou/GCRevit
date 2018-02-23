@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>83a9a233-f074-4620-a29c-e12400ee8078</ProjectGuid>
+    <ProjectGuid>{83A9A233-F074-4620-A29C-E12400EE8078}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GCRevit2018</RootNamespace>
@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;REVIT2018</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -30,24 +30,268 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="RevitAPI">
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPIUI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\gcrevit\collectors\CollectorUtil.cs">
+      <Link>Collectors\CollectorUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCAdaptiveComponentCollector.cs">
+      <Link>Collectors\GCAdaptiveComponentCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCColumnCollector.cs">
+      <Link>Collectors\GCColumnCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCConnectionCollector.cs">
+      <Link>Collectors\GCConnectionCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCElementCollector.cs">
+      <Link>Collectors\GCElementCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCFloorCollector.cs">
+      <Link>Collectors\GCFloorCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCFoundationCollector.cs">
+      <Link>Collectors\GCFoundationCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCFrameCollector.cs">
+      <Link>Collectors\GCFrameCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCGridCollector.cs">
+      <Link>Collectors\GCGridCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCInstanceCollector.cs">
+      <Link>Collectors\GCInstanceCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCLevelCollector.cs">
+      <Link>Collectors\GCLevelCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCLinkCollector.cs">
+      <Link>Collectors\GCLinkCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCMassCollector.cs">
+      <Link>Collectors\GCMassCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCRoofCollector.cs">
+      <Link>Collectors\GCRoofCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCViewCollector.cs">
+      <Link>Collectors\GCViewCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\collectors\GCWallCollector.cs">
+      <Link>Collectors\GCWallCollector.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\creators\GCAdaptiveComponentCreator.cs">
+      <Link>Creators\GCAdaptiveComponentCreator.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\creators\GCColumnCreator.cs">
+      <Link>Creators\GCColumnCreator.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\creators\GCFrameCreator.cs">
+      <Link>Creators\GCFrameCreator.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\creators\GCGeometryCreator.cs">
+      <Link>Creators\GCGeometryCreator.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\creators\GCInstanceCreator.cs">
+      <Link>Creators\GCInstanceCreator.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\creators\GCLevelCreator.cs">
+      <Link>Creators\GCLevelCreator.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\creators\GCViewCreator.cs">
+      <Link>Creators\GCViewCreator.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elementdatas\AGCElementCurveData.cs">
+      <Link>ElementDatas\AGCElementCurveData.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elementdatas\GCColumnCurveData.cs">
+      <Link>ElementDatas\GCColumnCurveData.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elementdatas\GCFaceUVValues.cs">
+      <Link>ElementDatas\GCFaceUVValues.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elementdatas\GCFrameCurveData.cs">
+      <Link>ElementDatas\GCFrameCurveData.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elementdatas\GCGridIntersection.cs">
+      <Link>ElementDatas\GCGridIntersection.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\AGCColumnBase.cs">
+      <Link>Elements\AGCColumnBase.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\AGCColumnCurveDriven.cs">
+      <Link>Elements\AGCColumnCurveDriven.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\AGCElement.cs">
+      <Link>Elements\AGCElement.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\AGCFloorBase.cs">
+      <Link>Elements\AGCFloorBase.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\AGCFoundationBase.cs">
+      <Link>Elements\AGCFoundationBase.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\AGCFrameBase.cs">
+      <Link>Elements\AGCFrameBase.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\AGCFrameCurveDriven.cs">
+      <Link>Elements\AGCFrameCurveDriven.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\AGCGridBase.cs">
+      <Link>Elements\AGCGridBase.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\AGCInstance.cs">
+      <Link>Elements\AGCInstance.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\AGCRoofBase.cs">
+      <Link>Elements\AGCRoofBase.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\AGCViewBase.cs">
+      <Link>Elements\AGCViewBase.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\AGCViewportView.cs">
+      <Link>Elements\AGCViewportView.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\AGCWallBase.cs">
+      <Link>Elements\AGCWallBase.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCAdaptiveComponent.cs">
+      <Link>Elements\GCAdaptiveComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCColumnInPlace.cs">
+      <Link>Elements\GCColumnInPlace.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCColumnSlanted.cs">
+      <Link>Elements\GCColumnSlanted.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCColumnVertical.cs">
+      <Link>Elements\GCColumnVertical.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCConnection.cs">
+      <Link>Elements\GCConnection.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCFloor.cs">
+      <Link>Elements\GCFloor.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCFloorInPlace.cs">
+      <Link>Elements\GCFloorInPlace.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCFoundationFloor.cs">
+      <Link>Elements\GCFoundationFloor.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCFoundationInPlace.cs">
+      <Link>Elements\GCFoundationInPlace.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCFoundationInstance.cs">
+      <Link>Elements\GCFoundationInstance.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCFrameBeam.cs">
+      <Link>Elements\GCFrameBeam.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCFrameBrace.cs">
+      <Link>Elements\GCFrameBrace.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCFrameInPlace.cs">
+      <Link>Elements\GCFrameInPlace.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCGrid.cs">
+      <Link>Elements\GCGrid.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCGridMulti.cs">
+      <Link>Elements\GCGridMulti.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCInstance.cs">
+      <Link>Elements\GCInstance.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCLevel.cs">
+      <Link>Elements\GCLevel.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCLink.cs">
+      <Link>Elements\GCLink.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCMass.cs">
+      <Link>Elements\GCMass.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCRoofExtrusion.cs">
+      <Link>Elements\GCRoofExtrusion.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCRoofFootPrint.cs">
+      <Link>Elements\GCRoofFootPrint.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCRoofInPlace.cs">
+      <Link>Elements\GCRoofInPlace.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCViewDrafting.cs">
+      <Link>Elements\GCViewDrafting.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCViewLegend.cs">
+      <Link>Elements\GCViewLegend.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCViewLive.cs">
+      <Link>Elements\GCViewLive.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCViewSheet.cs">
+      <Link>Elements\GCViewSheet.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCWall.cs">
+      <Link>Elements\GCWall.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCWallCurtain.cs">
+      <Link>Elements\GCWallCurtain.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCWallCurtainPanel.cs">
+      <Link>Elements\GCWallCurtainPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\elements\GCWallInPlace.cs">
+      <Link>Elements\GCWallInPlace.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\exceptions\GCElementCreationException.cs">
+      <Link>Exceptions\GCElementCreationException.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\exceptions\GCElementParameterException.cs">
+      <Link>Exceptions\GCElementParameterException.cs</Link>
+    </Compile>
+    <Compile Include="..\GCRevit\GCRevitDocument.cs">
+      <Link>GCRevitDocument.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\utils\GCLogger.cs">
+      <Link>Utils\GCLogger.cs</Link>
+    </Compile>
+    <Compile Include="..\gcrevit\utils\GCLoggerForm.cs">
+      <Link>Utils\GCLoggerForm.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\gcrevit\utils\GCLoggerForm.designer.cs">
+      <Link>Utils\GCLoggerForm.designer.cs</Link>
+      <DependentUpon>GCLoggerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="..\gcrevit\utils\RevitUtil.cs">
+      <Link>Utils\RevitUtil.cs</Link>
+    </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\gcrevit\utils\GCLoggerForm.resx">
+      <Link>Utils\GCLoggerForm.resx</Link>
+      <DependentUpon>GCLoggerForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -57,5 +301,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
- </Project>
+</Project>

@@ -49,24 +49,24 @@ namespace GCRevit.Elements {
 
         #region analysis visualization= methods
         public void LoadAnalysisVisualizationValues(IEnumerable<AGCElement> elems, string visualizationName, string schemeName, IList<string> unitNames, IList<double> unitMultipliers) {
-            int numOfMeasurments = GetMaxNumOfMeasurments(elems);
-            SpatialFieldManager sfm = GetSpatialFieldManager(numOfMeasurments);
-            AnalysisResultSchema resultSchema = new AnalysisResultSchema(schemeName, visualizationName);
+            var numOfMeasurments = GetMaxNumOfMeasurments(elems);
+            var sfm = GetSpatialFieldManager(numOfMeasurments);
+            var resultSchema = new AnalysisResultSchema(schemeName, visualizationName);
             resultSchema.SetUnits(unitNames, unitMultipliers);
-            int schemaIdx = sfm.RegisterResult(resultSchema);
-            foreach (AGCElement elem in elems) {
-                foreach (GCFaceUVValues faceVals in elem.FaceUVValues) {
+            var schemaIdx = sfm.RegisterResult(resultSchema);
+            foreach (var elem in elems) {
+                foreach (var faceVals in elem.FaceUVValues) {
                     if (null != faceVals) {
-                        int primIdx = sfm.AddSpatialFieldPrimitive(faceVals.Face, Transform.Identity);
+                        var primIdx = sfm.AddSpatialFieldPrimitive(faceVals.Face, Transform.Identity);
                         try {
-                            List<UV> paramUVs = new List<UV>();
-                            List<ValueAtPoint> paramUVValsAtPoint = new List<ValueAtPoint>();
-                            foreach (KeyValuePair<UV, IList<double>> vals in faceVals) {
+                            var paramUVs = new List<UV>();
+                            var paramUVValsAtPoint = new List<ValueAtPoint>();
+                            foreach (var vals in faceVals) {
                                 paramUVs.Add(vals.Key);
                                 paramUVValsAtPoint.Add(new ValueAtPoint(vals.Value));
                             }
-                            FieldDomainPointsByUV domPts = new FieldDomainPointsByUV(paramUVs);
-                            FieldValues fieldVals = new FieldValues(paramUVValsAtPoint);
+                            var domPts = new FieldDomainPointsByUV(paramUVs);
+                            var fieldVals = new FieldValues(paramUVValsAtPoint);
                             sfm.UpdateSpatialFieldPrimitive(primIdx, domPts, fieldVals, schemaIdx);
                         } catch (Exception x) {
                             sfm.RemoveSpatialFieldPrimitive(primIdx);
@@ -78,7 +78,7 @@ namespace GCRevit.Elements {
         }
 
         public SpatialFieldManager GetSpatialFieldManager(int numOfMeasurments) {
-            SpatialFieldManager sfm = SpatialFieldManager.GetSpatialFieldManager(this.RevitView);
+            var sfm = SpatialFieldManager.GetSpatialFieldManager(this.RevitView);
             if (null == sfm || sfm.NumberOfMeasurements != numOfMeasurments) {
                 sfm = SpatialFieldManager.CreateSpatialFieldManager(this.RevitView, numOfMeasurments);
             }
@@ -86,9 +86,9 @@ namespace GCRevit.Elements {
         }
         
         int GetMaxNumOfMeasurments(IEnumerable<AGCElement> elems) {
-            int maxMeasurments = 0;
-            foreach (AGCElement elem in elems) {
-                foreach (GCFaceUVValues uvVals in elem.FaceUVValues) {
+            var maxMeasurments = 0;
+            foreach (var elem in elems) {
+                foreach (var uvVals in elem.FaceUVValues) {
                     if (maxMeasurments < uvVals.Count) {
                         maxMeasurments = uvVals.Count;
                     }
@@ -98,12 +98,12 @@ namespace GCRevit.Elements {
         }
 
         public void CreateAndSetAnalysisDisplayStyle(string displayStyleName, List<Color> colors) {
-            AnalysisDisplayStyle analysisDisplayStyle = GetAnalysisDisplayStyle(displayStyleName, colors);
+            var analysisDisplayStyle = GetAnalysisDisplayStyle(displayStyleName, colors);
             this.RevitView.AnalysisDisplayStyleId = analysisDisplayStyle.Id;
         }
 
         AnalysisDisplayStyle GetAnalysisDisplayStyle(string displayStyleName, List<Color> colors) {
-            FilteredElementCollector dispStyleColl = new FilteredElementCollector(this.elem.Document).OfClass(typeof(AnalysisDisplayStyle));
+            var dispStyleColl = new FilteredElementCollector(this.elem.Document).OfClass(typeof(AnalysisDisplayStyle));
             foreach (AnalysisDisplayStyle style in dispStyleColl.ToElements()) {
                 if (style.Name.Equals(displayStyleName)) {
                     return style;
@@ -113,17 +113,17 @@ namespace GCRevit.Elements {
         }
 
         AnalysisDisplayStyle CreateAnalysisDisplayStyle(string displayStyleName, List<Color> colors) {
-            AnalysisDisplayColoredSurfaceSettings coloredSurfaceSettings = new AnalysisDisplayColoredSurfaceSettings();
-            AnalysisDisplayColorSettings colorSettings = CreateAnalysisDisplayColorSettings(colors);
-            AnalysisDisplayLegendSettings legendSettings = new AnalysisDisplayLegendSettings();
+            var coloredSurfaceSettings = new AnalysisDisplayColoredSurfaceSettings();
+            var colorSettings = CreateAnalysisDisplayColorSettings(colors);
+            var legendSettings = new AnalysisDisplayLegendSettings();
             return AnalysisDisplayStyle.CreateAnalysisDisplayStyle(this.elem.Document, displayStyleName, coloredSurfaceSettings, colorSettings, legendSettings);
         }
 
         AnalysisDisplayColorSettings CreateAnalysisDisplayColorSettings(List<Color> colors) {
-            AnalysisDisplayColorSettings colorSettings = new AnalysisDisplayColorSettings();
+            var colorSettings = new AnalysisDisplayColorSettings();
             colorSettings.MinColor = colors[0];
-            List<AnalysisDisplayColorEntry> interColors = new List<AnalysisDisplayColorEntry>();
-            for (int i = 1; i < colors.Count - 1; i++) {
+            var interColors = new List<AnalysisDisplayColorEntry>();
+            for (var i = 1; i < colors.Count - 1; i++) {
                 interColors.Add(new AnalysisDisplayColorEntry(colors[i]));
             }                
             colorSettings.SetIntermediateColors(interColors);

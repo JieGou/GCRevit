@@ -33,7 +33,7 @@ namespace GCRevit.Elements {
         }
 
         public static bool TypicalFramingParametersExist(Element elem) {
-            foreach (string paramName in RevitFramingParameterUtil.StandardFramingParameterNames) {
+            foreach (var paramName in RevitFramingParameterUtil.StandardFramingParameterNames) {
                 if (null == elem.LookupParameter(paramName)) {
                     return false;
                 }
@@ -50,14 +50,14 @@ namespace GCRevit.Elements {
 
         #region translation methods
         public void MoveStartPoint(XYZ newStr) {
-            LocationCurve locCrv = (this.RevitInstance.Location) as LocationCurve;
+            var locCrv = (this.RevitInstance.Location) as LocationCurve;
             if (locCrv.Curve is Line) {
                 SetLocationCurve(Line.CreateBound(newStr, this.crv.EndPoint));
             }
         }
 
         public void MoveEndPoint(XYZ newEnd) {
-            LocationCurve locCrv = (this.RevitInstance.Location) as LocationCurve;
+            var locCrv = (this.RevitInstance.Location) as LocationCurve;
             if (locCrv.Curve is Line) {
                 SetLocationCurve(Line.CreateBound(this.crv.StartPoint, newEnd));
             }

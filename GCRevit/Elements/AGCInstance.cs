@@ -32,14 +32,14 @@ namespace GCRevit.Elements {
 
         #region solid methods
         public override IEnumerable<Solid> GeometrySolids(Options opts) {
-            foreach (GeometryObject go in this.elem.get_Geometry(opts)) {
-                Solid gs = go as Solid;
-                GeometryInstance gi = go as GeometryInstance;
+            foreach (var go in this.elem.get_Geometry(opts)) {
+                var gs = go as Solid;
+                var gi = go as GeometryInstance;
                 if (null != gs && 0 < gs.Faces.Size) {
                     yield return gs;
                 } else if (null != gi) {
-                    foreach (GeometryObject gio in gi.GetInstanceGeometry()) {
-                        Solid gis = gio as Solid;
+                    foreach (var gio in gi.GetInstanceGeometry()) {
+                        var gis = gio as Solid;
                         if (null != gis && 0 < gis.Faces.Size) {
                             yield return gis;
                         }

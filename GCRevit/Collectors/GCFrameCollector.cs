@@ -16,11 +16,11 @@ namespace GCRevit.Collectors {
     public static class GCFrameCollector {
 
         public static IEnumerable<AGCFrameCurveDriven> CollectAllCurveDrivenFraming(GCRevitDocument doc) {
-            List<GCElementCollector.IsElement> isElem = new List<GCElementCollector.IsElement> { 
+            var isElem = new List<GCElementCollector.IsElement> { 
                 GCFrameBeam.IsBeam, 
                 GCFrameBrace.IsBrace
             };
-            List<GCElementCollector.CreateElement<AGCFrameCurveDriven>> createElem = new List<GCElementCollector.CreateElement<AGCFrameCurveDriven>>() { 
+            var createElem = new List<GCElementCollector.CreateElement<AGCFrameCurveDriven>>() { 
                 GCFrameBeam.CreateGCFrameBeam, 
                 GCFrameBrace.CreateGCFrameBrace 
             };
@@ -28,11 +28,11 @@ namespace GCRevit.Collectors {
         }
 
         public static IEnumerable<AGCFrameCurveDriven> CollectSelectedCurveDrivenFraming(GCRevitDocument doc) {
-            List<GCElementCollector.IsElement> isElem = new List<GCElementCollector.IsElement> { 
+            var isElem = new List<GCElementCollector.IsElement> { 
                 GCFrameBeam.IsBeam, 
                 GCFrameBrace.IsBrace 
             };
-            List<GCElementCollector.CreateElement<AGCFrameCurveDriven>> createElem = new List<GCElementCollector.CreateElement<AGCFrameCurveDriven>>() { 
+            var createElem = new List<GCElementCollector.CreateElement<AGCFrameCurveDriven>>() { 
                 GCFrameBeam.CreateGCFrameBeam, 
                 GCFrameBrace.CreateGCFrameBrace 
             };

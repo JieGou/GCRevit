@@ -17,11 +17,11 @@ namespace GCRevit.Collectors {
     public static class GCColumnCollector {
 
         public static IEnumerable<AGCColumnCurveDriven> CollectAllCurveDrivenColumns(GCRevitDocument doc) {
-            List<GCElementCollector.IsElement> isElem = new List<GCElementCollector.IsElement> { 
+            var isElem = new List<GCElementCollector.IsElement> { 
                 GCColumnSlanted.IsColumnSlanted, 
                 GCColumnVertical.IsColumnVertical 
             };
-            List<GCElementCollector.CreateElement<AGCColumnCurveDriven>> createElem = new List<GCElementCollector.CreateElement<AGCColumnCurveDriven>>() { 
+            var createElem = new List<GCElementCollector.CreateElement<AGCColumnCurveDriven>>() { 
                 GCColumnSlanted.CreateGCColumnSlanted, 
                 GCColumnVertical.CreateGCColumnVertical 
             };
@@ -29,11 +29,11 @@ namespace GCRevit.Collectors {
         }
 
         public static IEnumerable<AGCColumnCurveDriven> CollectSelectedCurveDrivenColumns(GCRevitDocument doc) {
-            List<GCElementCollector.IsElement> isElem = new List<GCElementCollector.IsElement> { 
+            var isElem = new List<GCElementCollector.IsElement> { 
                 GCColumnSlanted.IsColumnSlanted, 
                 GCColumnVertical.IsColumnVertical 
             };
-            List<GCElementCollector.CreateElement<AGCColumnCurveDriven>> createElem = new List<GCElementCollector.CreateElement<AGCColumnCurveDriven>>() { 
+            var createElem = new List<GCElementCollector.CreateElement<AGCColumnCurveDriven>>() { 
                 GCColumnSlanted.CreateGCColumnSlanted, 
                 GCColumnVertical.CreateGCColumnVertical 
             };

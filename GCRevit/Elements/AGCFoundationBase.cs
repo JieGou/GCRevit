@@ -29,7 +29,7 @@ namespace GCRevit.Elements {
         }
 
         public static bool TypicalFoundationParametersExist(Element elem) {
-            foreach (string paramName in RevitFoundationParameterUtil.StandardFoundationParameterNames) {
+            foreach (var paramName in RevitFoundationParameterUtil.StandardFoundationParameterNames) {
                 if (null == elem.LookupParameter(paramName)) {
                     return false;
                 }

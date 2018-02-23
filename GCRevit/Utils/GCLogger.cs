@@ -52,7 +52,7 @@ namespace GCRevit.Utils {
         }
 
         public static void DisplayLog(bool clearLog) {
-            using (GCLoggerForm form = new GCLoggerForm(log.ToString())) {
+            using (var form = new GCLoggerForm(log.ToString())) {
                 form.ShowDialog();
             }
             if (clearLog) {

@@ -24,20 +24,20 @@ namespace GCRevit.Creators {
 
         #region creators
         public static GCViewLive CreateSectionAtFaceParameter(GCRevitDocument doc, Face face, UV param, double viewCropDim, double viewDepth) {
-            ElementId viewTypeId = GetSectionType(doc, StandardSectionViewFamilyTypeName).Id;
-            BoundingBoxXYZ boundBox = GenerateBoundingBoxFromFaceAndParameter(face, param, viewCropDim, viewDepth);
+            var viewTypeId = GetSectionType(doc, StandardSectionViewFamilyTypeName).Id;
+            var boundBox = GenerateBoundingBoxFromFaceAndParameter(face, param, viewCropDim, viewDepth);
             return GCViewLive.CreateGCViewLive(ViewSection.CreateSection(doc.Document, viewTypeId, boundBox));
         }
 
         public static BoundingBoxXYZ GenerateBoundingBoxFromFaceAndParameter(Face face, UV param, double viewCropDim, double viewDepth) {
-            Transform faceDeriv = face.ComputeDerivatives(param);
-            XYZ faceNormal = face.ComputeNormal(param);
-            XYZ facePoint = face.Evaluate(param);
+            var faceDeriv = face.ComputeDerivatives(param);
+            var faceNormal = face.ComputeNormal(param);
+            var facePoint = face.Evaluate(param);
             return GenerateBoundingBoxFromFaceData(facePoint, faceNormal, faceDeriv, viewCropDim, viewDepth);
         }
 
         public static BoundingBoxXYZ GenerateBoundingBoxFromFaceData(XYZ facePoint, XYZ faceNormal, Transform faceDeriv, double viewCropDim, double viewDepth) {
-            BoundingBoxXYZ bb = new BoundingBoxXYZ();
+            var bb = new BoundingBoxXYZ();
             bb.Enabled = true;
             bb.Max = new XYZ(viewCropDim, viewCropDim, 0);
             bb.Min = new XYZ(-viewCropDim, -viewCropDim, -viewDepth);
@@ -46,7 +46,7 @@ namespace GCRevit.Creators {
         }
 
         public static Transform SectionTransform(XYZ origin, XYZ viewDir, XYZ upDir, XYZ rightDir) {
-            Transform tran = Transform.Identity;
+            var tran = Transform.Identity;
             tran.Origin = origin;
             tran.BasisX = rightDir;
             tran.BasisY = upDir;
@@ -57,11 +57,11 @@ namespace GCRevit.Creators {
 
         #region view family types
         public static List<ViewFamilyType> GetLoadedViewFamilyTypes(GCRevitDocument doc) {
-            List<ViewFamilyType> viewTypes = new List<ViewFamilyType>();
-            FilteredElementCollector fec = new FilteredElementCollector(doc.Document);
+            var viewTypes = new List<ViewFamilyType>();
+            var fec = new FilteredElementCollector(doc.Document);
             fec.OfClass(typeof(ViewFamilyType));
-            foreach (Element e in fec.ToElements()) {
-                ViewFamilyType ft = e as ViewFamilyType;
+            foreach (var e in fec.ToElements()) {
+                var ft = e as ViewFamilyType;
                 if (null != ft) {
                     viewTypes.Add(ft);
                 }
@@ -70,7 +70,7 @@ namespace GCRevit.Creators {
         }
 
         public static ViewFamilyType GetSectionType(GCRevitDocument doc, string name) {
-            foreach (ViewFamilyType ft in GetLoadedViewFamilyTypes(doc)) {
+            foreach (var ft in GetLoadedViewFamilyTypes(doc)) {
                 if (ViewFamily.Section == ft.ViewFamily && ft.Name.Equals(name)) {
                     return ft;
                 }

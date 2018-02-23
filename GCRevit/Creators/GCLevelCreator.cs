@@ -19,18 +19,18 @@ namespace GCRevit.Creators {
 #if (REVIT2015)
             Level lev = doc.Document.Create.NewLevel(elev);
 #else
-            Level lev = Level.Create(doc.Document, elev);
+            var lev = Level.Create(doc.Document, elev);
 #endif
             return new GCLevel(lev);
         }
 
         public static List<GCLevel> CreateLevels(GCRevitDocument doc, List<double> elevs) {
-            List<GCLevel> levs = new List<GCLevel>();
-            foreach (double elev in elevs) {
+            var levs = new List<GCLevel>();
+            foreach (var elev in elevs) {
 #if (REVIT2015)
                 Level lev = doc.Document.Create.NewLevel(elev);
 #else
-                Level lev = Level.Create(doc.Document, elev);
+                var lev = Level.Create(doc.Document, elev);
 #endif
                 levs.Add(new GCLevel(lev));
             }

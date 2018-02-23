@@ -47,7 +47,7 @@ namespace GCRevit.ElementDatas {
 
         public IList<double> this[UV key] {
             get {
-                UV matchingKey = GetMatchingKey(key);
+                var matchingKey = GetMatchingKey(key);
                 if (null != matchingKey) {
                     return this.vals[matchingKey];
                 } else {
@@ -55,7 +55,7 @@ namespace GCRevit.ElementDatas {
                 } 
             }
             set {
-                UV matchingKey = GetMatchingKey(key);
+                var matchingKey = GetMatchingKey(key);
                 if (null != matchingKey) {
                     this.vals[matchingKey] = value;
                 } else {
@@ -75,10 +75,10 @@ namespace GCRevit.ElementDatas {
 
         #region idictionary implemented methods
         public void Add(UV key, IList<double> value) {
-            UV matchingKey = GetMatchingKey(key);
+            var matchingKey = GetMatchingKey(key);
             if (null != matchingKey) {
-                IList<double> currVals = this.vals[matchingKey];
-                foreach (double newVal in value) {
+                var currVals = this.vals[matchingKey];
+                foreach (var newVal in value) {
                     currVals.Add(newVal);
                 }
             } else {
@@ -95,7 +95,7 @@ namespace GCRevit.ElementDatas {
         }
 
         public bool Contains(KeyValuePair<UV, IList<double>> item) {
-            UV matchingKey = GetMatchingKey(item.Key);
+            var matchingKey = GetMatchingKey(item.Key);
             if (null != matchingKey) {
                 return AreValuesEqual(this.vals[matchingKey], item.Value);
             }
@@ -119,7 +119,7 @@ namespace GCRevit.ElementDatas {
         }
         
         public bool Remove(UV key) {
-            UV matchingKey = GetMatchingKey(key);
+            var matchingKey = GetMatchingKey(key);
             if (null != matchingKey) {
                 return this.vals.Remove(matchingKey);
             } else {
@@ -128,7 +128,7 @@ namespace GCRevit.ElementDatas {
         }
 
         public bool Remove(KeyValuePair<UV, IList<double>> item) {
-            UV matchingKey = GetMatchingKey(item.Key);
+            var matchingKey = GetMatchingKey(item.Key);
             if (null != matchingKey) {
                 return this.vals.Remove(matchingKey);
             } else {
@@ -137,7 +137,7 @@ namespace GCRevit.ElementDatas {
         }
 
         public bool TryGetValue(UV key, out IList<double> value) {
-            UV matchingKey = GetMatchingKey(key);
+            var matchingKey = GetMatchingKey(key);
             if (null != matchingKey) {
                 return this.vals.TryGetValue(matchingKey, out value);
             } else {
@@ -149,7 +149,7 @@ namespace GCRevit.ElementDatas {
 
         #region key compare methods
         UV GetMatchingKey(UV key) {
-            foreach (KeyValuePair<UV, IList<double>> val in vals) {
+            foreach (var val in vals) {
                 if (AreKeysEqual(val.Key, key)) {
                     return val.Key;
                 }
@@ -165,7 +165,7 @@ namespace GCRevit.ElementDatas {
 
         bool AreValuesEqual(IList<double> vals1, IList<double> vals2) {
             if (vals1.Count == vals2.Count) {
-                for (int i = 0; i < vals1.Count; i++) {
+                for (var i = 0; i < vals1.Count; i++) {
                     if (!AreDoublesAlmostEqual(vals1[i], vals2[i])) {
                         return false;
                     }

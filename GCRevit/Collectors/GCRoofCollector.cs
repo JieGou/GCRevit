@@ -19,11 +19,11 @@ namespace GCRevit.Collectors {
     public static class GCRoofCollector {
 
         public static IEnumerable<AGCRoofBase> CollectAllRoofSystems(GCRevitDocument doc) {
-            List<GCElementCollector.IsElement> isElem = new List<GCElementCollector.IsElement> { 
+            var isElem = new List<GCElementCollector.IsElement> { 
                 GCRoofExtrusion.IsRoofExtrusion, 
                 GCRoofFootPrint.IsRoofFootPrint 
             };
-            List<GCElementCollector.CreateElement<AGCRoofBase>> createElem = new List<GCElementCollector.CreateElement<AGCRoofBase>>() { 
+            var createElem = new List<GCElementCollector.CreateElement<AGCRoofBase>>() { 
                 GCRoofExtrusion.CreateGCRoofExtrusion, 
                 GCRoofFootPrint.CreateGCRoofFootPrint 
             };
@@ -31,11 +31,11 @@ namespace GCRevit.Collectors {
         }
 
         public static IEnumerable<AGCRoofBase> CollectSelectedRoofSystems(GCRevitDocument doc) {
-            List<GCElementCollector.IsElement> isElem = new List<GCElementCollector.IsElement> { 
+            var isElem = new List<GCElementCollector.IsElement> { 
                 GCRoofExtrusion.IsRoofExtrusion, 
                 GCRoofFootPrint.IsRoofFootPrint 
             };
-            List<GCElementCollector.CreateElement<AGCRoofBase>> createElem = new List<GCElementCollector.CreateElement<AGCRoofBase>>() { 
+            var createElem = new List<GCElementCollector.CreateElement<AGCRoofBase>>() { 
                 GCRoofExtrusion.CreateGCRoofExtrusion, 
                 GCRoofFootPrint.CreateGCRoofFootPrint 
             };

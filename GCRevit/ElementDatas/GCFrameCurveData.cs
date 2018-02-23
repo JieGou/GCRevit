@@ -16,17 +16,17 @@ namespace GCRevit.ElementDatas {
 
         #region constructors
         public GCFrameCurveData(FamilyInstance elem) {
-            double yOffset = elem.LookupParameter(RevitFramingParameterUtil.YOffset).AsDouble();
-            double zOffset = elem.LookupParameter(RevitFramingParameterUtil.ZOffset).AsDouble();
+            var yOffset = elem.LookupParameter(RevitFramingParameterUtil.YOffset).AsDouble();
+            var zOffset = elem.LookupParameter(RevitFramingParameterUtil.ZOffset).AsDouble();
             SetUpStartAndEndPoints(elem, yOffset, zOffset);
         }
 
         void SetUpStartAndEndPoints(FamilyInstance elem, double yOffset, double zOffset) {
-            Curve crv = ((LocationCurve)elem.Location).Curve;
-            XYZ strPt = crv.GetEndPoint(0);
-            XYZ endPt = crv.GetEndPoint(1);
-            XYZ startPoint = new XYZ(strPt.X, strPt.Y + yOffset, strPt.Z + zOffset);
-            XYZ endPoint = new XYZ(endPt.X, endPt.Y + yOffset, endPt.Z + zOffset);
+            var crv = ((LocationCurve)elem.Location).Curve;
+            var strPt = crv.GetEndPoint(0);
+            var endPt = crv.GetEndPoint(1);
+            var startPoint = new XYZ(strPt.X, strPt.Y + yOffset, strPt.Z + zOffset);
+            var endPoint = new XYZ(endPt.X, endPt.Y + yOffset, endPt.Z + zOffset);
             SetUpPointValues(startPoint, endPoint);
         }
         #endregion

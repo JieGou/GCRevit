@@ -33,7 +33,7 @@ namespace GCRevit.Elements {
         }
 
         public static bool TypicalColumnParametersExist(Element elem) {
-            foreach (string paramName in RevitColumnParameterUtil.StandardColumnParameterNames) {
+            foreach (var paramName in RevitColumnParameterUtil.StandardColumnParameterNames) {
                 if (null == elem.LookupParameter(paramName)) {
                     return false;
                 }

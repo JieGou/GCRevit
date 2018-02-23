@@ -24,9 +24,9 @@ namespace GCRevit.Utils {
         }
 
         public static List<XYZ> IntersectionPointsOfCurves(Curve c1, Curve c2) {
-            List<XYZ> ints = new List<XYZ>();
+            var ints = new List<XYZ>();
             IntersectionResultArray ira;
-            SetComparisonResult intResult = c1.Intersect(c2, out ira);
+            var intResult = c1.Intersect(c2, out ira);
             if (SetComparisonResult.Overlap == intResult && 0 < ira.Size) {
                 foreach (IntersectionResult ir in ira) {
                     ints.Add(ir.XYZPoint);
@@ -64,7 +64,7 @@ namespace GCRevit.Utils {
 
         public static List<string> StandardColumnParameterNames {
             get {
-                List<string> datum = new List<string>();
+                var datum = new List<string>();
                 datum.Add(BaseLevel);
                 datum.Add(TopLevel);
                 datum.Add(BaseOffset);
@@ -83,7 +83,7 @@ namespace GCRevit.Utils {
 
         public static List<string> StandardFloorParameterNames {
             get {
-                List<string> datum = new List<string>();
+                var datum = new List<string>();
                 datum.Add(Level);
                 datum.Add(HeightOffset);
                 return datum;
@@ -101,7 +101,7 @@ namespace GCRevit.Utils {
 
         public static List<string> StandardFoundationParameterNames {
             get {
-                List<string> datum = new List<string>();
+                var datum = new List<string>();
                 datum.Add(Level);
                 datum.Add(Offset);
                 datum.Add(ElevationAtBottom);
@@ -124,7 +124,7 @@ namespace GCRevit.Utils {
 
         public static List<string> StandardFramingParameterNames {
             get {
-                List<string> datum = new List<string>();
+                var datum = new List<string>();
                 datum.Add(ReferenceLevel);
                 datum.Add(StartOffset);
                 datum.Add(EndOffset);

@@ -34,18 +34,18 @@ namespace GCRevit.Elements {
 
         #region methods
         public override void Move(XYZ transVect) {
-            foreach (ElementId id in AdaptiveComponentInstanceUtils.GetInstancePlacementPointElementRefIds(this.RevitInstance)) {
+            foreach (var id in AdaptiveComponentInstanceUtils.GetInstancePlacementPointElementRefIds(this.RevitInstance)) {
                 MovePointById(id, transVect);
             }
         }
 
         public bool MovePoint(int idx, XYZ trans) {
-            ElementId ptId = AdaptiveComponentInstanceUtils.GetInstancePlacementPointElementRefIds(this.RevitInstance)[idx];
+            var ptId = AdaptiveComponentInstanceUtils.GetInstancePlacementPointElementRefIds(this.RevitInstance)[idx];
             return MovePointById(ptId, trans);
         }
 
         internal bool MovePointById(ElementId id, XYZ trans) {
-            ReferencePoint pt = this.RevitElement.Document.GetElement(id) as ReferencePoint;
+            var pt = this.RevitElement.Document.GetElement(id) as ReferencePoint;
             ElementTransformUtils.MoveElement(this.RevitElement.Document, id, trans);
             return pt.Location.Move(trans);
         }

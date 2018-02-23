@@ -16,11 +16,11 @@ namespace GCRevit.Collectors {
     public static class GCGridCollector {
 
         public static IEnumerable<AGCGridBase> CollectAllGridsAndMultiGrids(GCRevitDocument doc) {
-            List<GCElementCollector.IsElement> isElem = new List<GCElementCollector.IsElement> { 
+            var isElem = new List<GCElementCollector.IsElement> { 
                 GCGrid.IsGrid, 
                 GCGridMulti.IsGridMulti
             };
-            List<GCElementCollector.CreateElement<AGCGridBase>> createElem = new List<GCElementCollector.CreateElement<AGCGridBase>>() { 
+            var createElem = new List<GCElementCollector.CreateElement<AGCGridBase>>() { 
                 GCGrid.CreateGCGrid, 
                 GCGridMulti.CreateGCGridMulti
             };
@@ -28,11 +28,11 @@ namespace GCRevit.Collectors {
         }
 
         public static IEnumerable<AGCGridBase> CollectSelectedGridsAndMultiGrids(GCRevitDocument doc) {
-            List<GCElementCollector.IsElement> isElem = new List<GCElementCollector.IsElement> { 
+            var isElem = new List<GCElementCollector.IsElement> { 
                 GCGrid.IsGrid, 
                 GCGridMulti.IsGridMulti
             };
-            List<GCElementCollector.CreateElement<AGCGridBase>> createElem = new List<GCElementCollector.CreateElement<AGCGridBase>>() { 
+            var createElem = new List<GCElementCollector.CreateElement<AGCGridBase>>() { 
                 GCGrid.CreateGCGrid, 
                 GCGridMulti.CreateGCGridMulti
             };
