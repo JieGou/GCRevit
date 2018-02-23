@@ -17,7 +17,7 @@ namespace GCRevit.Elements {
     public class GCConnection : AGCInstance {
 
         #region constructors
-        private GCConnection(FamilyInstance elem)
+        protected GCConnection(FamilyInstance elem)
             : base(elem) { }
                 
         public static GCConnection CreateGCConnection(Element elem) {

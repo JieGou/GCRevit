@@ -16,7 +16,7 @@ namespace GCRevit.Elements {
     public class GCWallInPlace : AGCInstance {
 
         #region constructors
-        private GCWallInPlace(FamilyInstance elem)
+        protected GCWallInPlace(FamilyInstance elem)
             : base(elem) { }
 
         public static GCWallInPlace CreateGCWallInPlace(Element elem) {

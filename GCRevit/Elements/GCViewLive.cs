@@ -19,13 +19,13 @@ namespace GCRevit.Elements {
     public class GCViewLive : AGCViewportView {
 
         #region constructors
-        private GCViewLive(View3D view)
+        protected GCViewLive(View3D view)
             : base(view) { }
 
-        private GCViewLive(ViewPlan view)
+        protected GCViewLive(ViewPlan view)
             : base(view) { }
 
-        private GCViewLive(ViewSection view)
+        protected GCViewLive(ViewSection view)
             : base(view) { }
 
         public static GCViewLive CreateGCViewLive(Element elem) {

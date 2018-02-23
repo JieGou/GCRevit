@@ -16,7 +16,7 @@ namespace GCRevit.Elements {
     public class GCGrid : AGCGridBase {
 
         #region constructors
-        private GCGrid(Grid grid)
+        protected GCGrid(Grid grid)
             : base(grid) { }
 
         public static GCGrid CreateGCGrid(Element elem) {

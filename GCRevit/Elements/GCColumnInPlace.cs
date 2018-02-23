@@ -16,7 +16,7 @@ namespace GCRevit.Elements {
     public class GCColumnInPlace : AGCColumnBase {
 
         #region constructor
-        private GCColumnInPlace(FamilyInstance elem)
+        protected GCColumnInPlace(FamilyInstance elem)
             : base(elem) { }
         
         public static GCColumnInPlace CreateGCColumnInPlace(Element elem) {

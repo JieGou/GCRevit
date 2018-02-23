@@ -16,7 +16,7 @@ namespace GCRevit.Elements {
     public class GCWallCurtain : AGCWallBase {
 
         #region constructors
-        private GCWallCurtain(CurtainSystem elem)
+        protected GCWallCurtain(CurtainSystem elem)
             : base(elem) { }
 
         public static GCWallCurtain CreateGCWallCurtain(Element elem) {

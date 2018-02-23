@@ -15,7 +15,7 @@ namespace GCRevit.Elements {
     public class GCViewDrafting : AGCViewportView {
 
         #region constructors
-        private GCViewDrafting(ViewDrafting elem)
+        protected GCViewDrafting(ViewDrafting elem)
             : base(elem) { }
 
         public static GCViewDrafting CreateGCViewDrafting(Element elem) {

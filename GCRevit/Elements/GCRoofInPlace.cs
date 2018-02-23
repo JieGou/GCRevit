@@ -16,7 +16,7 @@ namespace GCRevit.Elements {
     public class GCRoofInPlace : AGCInstance {
 
         #region constructors
-        private GCRoofInPlace(FamilyInstance elem)
+        protected GCRoofInPlace(FamilyInstance elem)
             : base(elem) { }
         
         public static GCRoofInPlace CreateGCRoofInPlace(Element elem) {

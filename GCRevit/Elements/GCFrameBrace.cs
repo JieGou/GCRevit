@@ -17,7 +17,7 @@ namespace GCRevit.Elements {
     public class GCFrameBrace : AGCFrameCurveDriven {
 
         #region constructors
-        private GCFrameBrace(FamilyInstance famInst)
+        protected GCFrameBrace(FamilyInstance famInst)
             : base(famInst) { }
 
         public static GCFrameBrace CreateGCFrameBrace(Element elem) {

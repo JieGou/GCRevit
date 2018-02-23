@@ -15,7 +15,7 @@ namespace GCRevit.Elements {
     public class GCWallCurtainPanel : AGCInstance {
 
         #region constructors
-        private GCWallCurtainPanel(Panel elem)
+        protected GCWallCurtainPanel(Panel elem)
             : base(elem) { }
 
         public static GCWallCurtainPanel CreateGCWallCurtainPanel(Element elem) {

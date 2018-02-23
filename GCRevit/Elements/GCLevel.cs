@@ -16,7 +16,7 @@ namespace GCRevit.Elements {
     public class GCLevel : AGCElement {
 
         #region constructor
-        private GCLevel(Level inst)
+        protected GCLevel(Level inst)
             : base(inst) { }
 
         public static GCLevel CreateGCLevel(Element elem) {
